@@ -20,6 +20,15 @@ public class GerenciadorBD {
         this.livros = new ArrayList<>();
         this.editoras = new ArrayList<>();
     }
+    
+    public boolean validarUsuario(String username, String password) {
+        for (Usuario usuario : usuarios) {
+            if (usuario.getNome().equalsIgnoreCase(username) && usuario.getSenha().equals(password)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public static synchronized GerenciadorBD getInstancia() {
         if (instancia == null) {

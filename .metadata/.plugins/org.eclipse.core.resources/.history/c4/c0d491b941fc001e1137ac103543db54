@@ -1,0 +1,33 @@
+package application;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import application.GerenciadorBD;
+
+public class LoginController {
+
+    @FXML
+    private TextField txtUsername;
+
+    @FXML
+    private PasswordField txtPassword;
+
+    @FXML
+    private Label lblStatus;
+
+    @FXML
+    private void handleLogin() {
+        String username = txtUsername.getText();
+        String password = txtPassword.getText();
+
+        if (GerenciadorBD.getInstancia().validarUsuario(username, password)) {
+            lblStatus.setText("Login bem-sucedido!");
+            // Código para transição para a próxima tela
+        } else {
+            lblStatus.setText("Falha no login. Usuário ou senha incorretos.");
+        }
+    }
+}
+

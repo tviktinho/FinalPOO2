@@ -3,15 +3,20 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="317.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="317.0" style="-fx-background-color: #aac9c6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="31.0" layoutY="348.0" mnemonicParsing="false" text="Editar" />
-      <Button layoutX="238.0" layoutY="348.0" mnemonicParsing="false" text="Cancelar" />
+      <Button layoutX="31.0" layoutY="348.0" mnemonicParsing="false" style="-fx-background-color: #112024;" text="Editar" textFill="WHITE" />
+      <Button layoutX="238.0" layoutY="348.0" mnemonicParsing="false" style="-fx-background-color: #112024;" text="Cancelar" textFill="WHITE" />
       <Label layoutX="31.0" layoutY="168.0" text="Nome" />
       <TextField layoutX="114.0" layoutY="164.0" />
-      <ImageView fitHeight="102.0" fitWidth="160.0" layoutX="79.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="163.0" fitWidth="202.0" layoutX="77.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Downloads/logojava.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
