@@ -1,0 +1,28 @@
+package entidades.usuario;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
+
+public class ProcurarController {
+
+	@FXML
+    private TextField txtNome;
+
+    @FXML
+    private ListView<String> listViewUsuarios; // Supondo que queremos exibir apenas os nomes dos usuários
+
+    @FXML
+    private void onBtnPesquisarClick() {
+        String nomeBusca = txtNome.getText().trim();
+
+        // Obtém a lista de nomes dos usuários que contêm o texto de busca
+        listViewUsuarios.getItems().clear(); // Limpa a lista antes de adicionar os novos resultados
+        GerenciadorBD.getInstancia().getUsuarios().stream()
+                .filter(u -> u.getNome().toLowerCase().contains(nomeBusca.toLowerCase()))
+                .forEach(u -> listViewUsuarios.getItems().add(u.getNome()));
+    }
+
+}

@@ -3,15 +3,22 @@ package application;
 import java.util.ArrayList;
 import java.util.List;
 
+import entidades.editora.Editora;
+import entidades.livro.Livro;
+import entidades.usuario.Usuario;
+
 public class GerenciadorBD {
     private static GerenciadorBD instancia;
 
     // Simulando um banco de dados com uma estrutura de dados simples
     private List<Usuario> usuarios;
-
+    private List<Livro> livros;
+    private List<Editora> editoras;
     private GerenciadorBD() {
         // Inicializa a lista que simula o banco de dados
         this.usuarios = new ArrayList<>();
+        this.livros = new ArrayList<>();
+        this.editoras = new ArrayList<>();
     }
 
     public static synchronized GerenciadorBD getInstancia() {
@@ -22,17 +29,30 @@ public class GerenciadorBD {
     }
 
     public void salvarUsuario(Usuario usuario) {
-        // Aqui você implementaria a lógica para inserir um novo usuário no banco de dados
-        // Por exemplo, uma inserção SQL se estivesse usando um banco de dados relacional
-
-        // Simulando a inserção adicionando o usuário à lista
         this.usuarios.add(usuario);
     }
+    
+    public void adicionarLivro(Livro livro) {
+        this.livros.add(livro);
+    }
+    
+    public void adicionarEditora(Editora editora) {
+        this.editoras.add(editora);
+    }
 
-    // Método para verificar se um email já está cadastrado
     public boolean emailExiste(String email) {
         return usuarios.stream().anyMatch(u -> u.getEmail().equalsIgnoreCase(email));
     }
+    
+    public List<Usuario> getUsuarios() {
+        return this.usuarios;
+    }
 
-    // Outros métodos para gerenciar livros, pedidos, etc., poderiam ser adicionados aqui
+    public List<Livro> getLivros() {
+        return livros;
+    }
+    
+    public List<Editora> getEditoras() {
+        return editoras;
+    }
 }

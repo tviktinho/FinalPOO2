@@ -1,0 +1,35 @@
+package entidades.livro;
+
+import application.GerenciadorBD;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+
+public class LivroController {
+    @FXML private TextField txtEditora;
+    @FXML private TextField txtTitulo;
+    @FXML private TextField txtAutor;
+    @FXML private TextField txtNumeroPaginas;
+    @FXML private TextField txtCategoria;
+    @FXML private TextField txtQuantidade;
+    @FXML private Button btnPesquisar;
+
+    @FXML
+    private void onCadastrarLivro() {
+        String editora = txtEditora.getText();
+        String titulo = txtTitulo.getText();
+        String autor = txtAutor.getText();
+        int numeroPaginas = Integer.parseInt(txtNumeroPaginas.getText());
+        String categoria = txtCategoria.getText();
+        int quantidade = Integer.parseInt(txtQuantidade.getText());
+
+        Livro novoLivro = new Livro(editora, titulo, autor, numeroPaginas, categoria, quantidade);
+        GerenciadorBD.getInstancia().adicionarLivro(novoLivro);
+    }
+
+    @FXML
+    private void onCancelar() {
+        // Lógica para cancelar o cadastro
+    }
+}
+

@@ -6,12 +6,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="317.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="317.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="entidades.editora.EditoraController">
    <children>
-      <Button layoutX="31.0" layoutY="348.0" mnemonicParsing="false" text="Cadastrar" />
-      <Button layoutX="238.0" layoutY="348.0" mnemonicParsing="false" text="Cancelar" />
-      <Label layoutX="31.0" layoutY="168.0" text="Nome" />
-      <TextField layoutX="114.0" layoutY="164.0" />
-      <ImageView fitHeight="102.0" fitWidth="160.0" layoutX="79.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#onCadastrarClick" text="Cadastrar" />
+      <Button layoutX="241.0" layoutY="361.0" mnemonicParsing="false" onAction="#onCancelarClick" text="Cancelar" />
+      <Label layoutX="42.0" layoutY="254.0" text="Nome" />
+      <TextField fx:id="txtNome" layoutX="125.0" layoutY="250.0" />
+      <ImageView fitHeight="150.0" fitWidth="160.0" layoutX="79.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="128.0" layoutY="361.0" mnemonicParsing="false" onAction="#onProcurarEditorasClick" text="Procurar" />
+      <Label fx:id="lblMensagem" layoutX="145.0" layoutY="208.0" />
    </children>
 </Pane>

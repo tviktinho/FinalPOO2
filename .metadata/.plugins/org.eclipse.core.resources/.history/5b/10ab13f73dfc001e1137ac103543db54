@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="317.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#onCadastrarClick" text="Cadastrar" />
+      <Button layoutX="241.0" layoutY="361.0" mnemonicParsing="false" onAction="#onCancelarClick" text="Cancelar" />
+      <Label layoutX="42.0" layoutY="254.0" text="Nome" />
+      <TextField layoutX="125.0" layoutY="250.0" />
+      <ImageView fitHeight="150.0" fitWidth="160.0" layoutX="79.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="128.0" layoutY="361.0" mnemonicParsing="false" text="Procurar" />
+   </children>
+</Pane>

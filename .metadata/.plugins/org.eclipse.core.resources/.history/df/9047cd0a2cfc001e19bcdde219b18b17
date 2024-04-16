@@ -1,0 +1,5 @@
+package entidades.usuario;
+
+public class ProcurarController {
+
+}

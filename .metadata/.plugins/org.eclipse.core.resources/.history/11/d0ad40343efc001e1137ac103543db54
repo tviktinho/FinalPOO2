@@ -1,0 +1,31 @@
+package entidades.editora;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
+import application.GerenciadorBD;
+
+public class EditoraController {
+
+    @FXML
+    private TextField txtNome;
+
+    @FXML
+    protected void onCadastrarClick() {
+        String nome = txtNome.getText();
+
+        if (!nome.isEmpty()) {
+            Editora novaEditora = new Editora(nome);
+            GerenciadorBD.getInstancia().adicionarEditora(novaEditora);
+            // Limpa o campo após o cadastro
+            txtNome.clear();
+        } else {
+            // Exibir mensagem de erro, se necessário
+        }
+    }
+
+    @FXML
+    protected void onCancelarClick() {
+        txtNome.clear();
+    }
+}
