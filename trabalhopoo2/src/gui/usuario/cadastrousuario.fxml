@@ -8,10 +8,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="335.0" style="-fx-background-color: #aac9c6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="entidades.usuario.CadastroController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="454.0" prefWidth="335.0" style="-fx-background-color: #aac9c6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="entidades.usuario.CadastroController">
    <children>
-      <Button id="btnCadastrar" layoutX="31.0" layoutY="348.0" mnemonicParsing="false" onAction="#onBtnCadastrarClick" style="-fx-background-color: #112024;" text="Cadastrar" textFill="WHITE" />
-      <Button layoutX="238.0" layoutY="348.0" mnemonicParsing="false" onAction="#handleVoltar" style="-fx-background-color: #112024;" text="Voltar" textFill="WHITE" />
+      <Button id="btnCadastrar" layoutX="40.0" layoutY="407.0" mnemonicParsing="false" onAction="#onBtnCadastrarClick" style="-fx-background-color: #112024;" text="Cadastrar" textFill="WHITE" />
+      <Button layoutX="247.0" layoutY="407.0" mnemonicParsing="false" onAction="#handleVoltar" style="-fx-background-color: #112024;" text="Voltar" textFill="WHITE" />
       <Label id="txtNome" layoutX="31.0" layoutY="168.0" text="Nome" />
       <Label id="txtEmail" layoutX="33.0" layoutY="205.0" text="Email" />
       <Label id="txtTelefone" layoutX="31.0" layoutY="240.0" text="Telefone" />
@@ -19,11 +19,10 @@
       <TextField fx:id="txtNome" layoutX="114.0" layoutY="164.0" />
       <TextField fx:id="txtEmail" layoutX="114.0" layoutY="201.0" />
       <TextField fx:id="txtTelefone" layoutX="114.0" layoutY="236.0" />
-      <Button id="btnMostrar" layoutX="133.0" layoutY="348.0" mnemonicParsing="false" onAction="#onBtnMostrarClick" style="-fx-background-color: #112024;" text="Mostrar" textFill="WHITE" />
       <PasswordField fx:id="pwdSenha" layoutX="114.0" layoutY="268.0" />
       <Label id="txtSenha" layoutX="17.0" layoutY="308.0" text="Confirmar senha" />
       <PasswordField fx:id="pwdConfirmarSenha" layoutX="114.0" layoutY="304.0" />
-      <Label fx:id="lblMensagem" layoutX="225.0" layoutY="77.0" />
+      <Label fx:id="lblMensagem" layoutX="72.0" layoutY="355.0" />
       <ImageView fitHeight="163.0" fitWidth="202.0" layoutX="86.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../Downloads/logojava.png" />

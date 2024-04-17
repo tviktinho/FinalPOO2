@@ -69,20 +69,6 @@ public class CadastroController {
     }
     
     @FXML
-    private void onBtnMostrarClick(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/usuario/procurarusuario.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    
-    @FXML
     private void handleVoltar() {
         try {
             Stage stage = (Stage) txtNome.getScene().getWindow();

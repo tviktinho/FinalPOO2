@@ -27,7 +27,6 @@
             <Image url="@../../../../../Downloads/logojava.png" />
          </image></ImageView>
       <TextField fx:id="txtCategoria" layoutX="143.0" layoutY="307.0" />
-      <Button fx:id="btnPesquisar" layoutX="125.0" layoutY="361.0" mnemonicParsing="false" onAction="#onPesquisarLivrosClick" style="-fx-background-color: #112024;" text="Pesquisar" textFill="WHITE" />
       <Label fx:id="lblMensagem" layoutX="145.0" layoutY="116.0" />
    </children>
 </Pane>

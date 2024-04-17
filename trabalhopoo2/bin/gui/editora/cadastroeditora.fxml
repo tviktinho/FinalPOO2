@@ -13,7 +13,6 @@
       <Button layoutX="241.0" layoutY="361.0" mnemonicParsing="false" onAction="#onCancelarClick" style="-fx-background-color: #112024;" text="Cancelar" textFill="WHITE" />
       <Label layoutX="42.0" layoutY="254.0" text="Nome" />
       <TextField fx:id="txtNome" layoutX="125.0" layoutY="250.0" />
-      <Button layoutX="128.0" layoutY="361.0" mnemonicParsing="false" onAction="#onProcurarEditorasClick" style="-fx-background-color: #112024;" text="Procurar" textFill="WHITE" />
       <Label fx:id="lblMensagem" layoutX="145.0" layoutY="208.0" />
       <ImageView fitHeight="163.0" fitWidth="202.0" layoutX="77.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>

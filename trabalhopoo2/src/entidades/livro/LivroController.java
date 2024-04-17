@@ -50,22 +50,6 @@ public class LivroController {
                !numeroPaginas.isEmpty() && numeroPaginas.matches("\\d+") && // verifica se é um número
                !categoria.isEmpty() && !quantidade.isEmpty() && quantidade.matches("\\d+"); // verifica se é um número
     }
-    
-    public void onPesquisarLivrosClick(ActionEvent event) {
-        try {
-            // Carrega a tela de pesquisa de livros
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/livro/procurarlivro.fxml"));
-            Parent root = loader.load();
-            
-            // Pega a cena e o palco atual para abrir a nova cena
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setTitle("Pesquisar Livros");
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace(); // Imprime a pilha de exceções se algo der errado
-        }
-    }
 
     @FXML
     private void onCancelar() {

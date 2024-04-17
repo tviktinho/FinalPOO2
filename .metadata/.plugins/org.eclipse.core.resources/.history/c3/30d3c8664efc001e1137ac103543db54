@@ -1,0 +1,56 @@
+package application;
+
+import java.io.IOException;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.scene.Node;
+public class IndexController {
+
+    @FXML
+    private void handleCadastrarUsuario() {
+        loadScene("/gui/usuario/cadastrousuario.fxml");
+    }
+
+    @FXML
+    private void handleProcurarUsuario() {
+        loadScene("/gui/usuario/procurarusuario.fxml");
+    }
+
+    @FXML
+    private void handleCadastrarLivro() {
+        loadScene("/gui/livro/cadastrolivro.fxml");
+    }
+
+    @FXML
+    private void handleProcurarLivro() {
+        loadScene("/gui/livro/procurarlivro.fxml");
+    }
+
+    @FXML
+    private void handleCadastrarEditora() {
+        loadScene("/gui/editora/cadastroeditora.fxml");
+    }
+
+    @FXML
+    private void handleProcurarEditora() {
+        loadScene("/gui/editora/procurareditora.fxml");
+    }
+
+    private void loadScene(String fxmlFile, Node node) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) node.getScene().getWindow(); // Obtém o Stage a partir do Node
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace(); // Implemente um tratamento de erro mais adequado
+            System.out.println("Erro ao carregar a cena: " + fxmlFile);
+        }
+    }
+
+}
