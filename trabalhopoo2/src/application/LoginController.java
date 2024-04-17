@@ -12,9 +12,11 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class LoginController {
-
+	
     @FXML
     private TextField txtUsername;
+    
+    private int idUser;
 
     @FXML
     private PasswordField txtPassword;
@@ -29,21 +31,28 @@ public class LoginController {
     private void handleLogin() {
         String username = txtUsername.getText();
         String password = txtPassword.getText();
+        
 
         if (GerenciadorBD.getInstancia().validarUsuario(username, password)) {
             lblStatus.setText("Login bem-sucedido!");
-            openIndexView();
+            idUser = GerenciadorBD.getInstancia().getIdUsuario(username);
+            IndexController indexController = new IndexController();
+            GerenciadorBD.getInstancia().registerObserver(indexController);
+            openIndexView(idUser);
         } else {
             lblStatus.setText("Falha no login. Usuário ou senha incorretos.");
         }
     }
 
-    private void openIndexView() {
+    private void openIndexView(int idUser) {
         try {
+        	
             // Carrega a vista de index
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/index.fxml"));
             Stage stage = (Stage) txtUsername.getScene().getWindow(); // Pega o stage atual
             Scene scene = new Scene(loader.load());
+            IndexController controller = loader.getController();
+            controller.setUserTxtData(txtUsername.getText(), idUser); 
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {

@@ -21,6 +21,14 @@ public class EditoraController {
     @FXML
     private Label lblMensagem;
     
+    private String userName = null;
+    private int userId = -1;
+    
+	public void setUserTxtData(String userName, int userId) {
+		this.userName = userName;
+		this.userId = userId;
+	}
+    
     @FXML
     protected void onCadastrarClick() {
         String nome = txtNome.getText().trim();

@@ -25,7 +25,15 @@ public class UsuarioEditController {
     @FXML
     private Button btnSave;
     @FXML
-    private Button btnCancel;
+    private Button btnCancelar;
+    
+    private String userName = null;
+    private int userId = -1;
+    
+	public void setUserTxtData(String userName, int userId) {
+		this.userName = userName;
+		this.userId = userId;
+	}
 
     // Inicializa o controlador com a lista de usuários e o índice do usuário a editar
     public void initData(List<Usuario> usuarios, int usuarioIndex) {
@@ -81,7 +89,7 @@ public class UsuarioEditController {
     @FXML
 	private void onBtnCancelarClick() {
 		try {
-			Stage stage = (Stage) btnCancel.getScene().getWindow();
+			Stage stage = (Stage) btnCancelar.getScene().getWindow();
 			Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/gui/index.fxml")));
 			stage.setScene(scene);
 			stage.show();

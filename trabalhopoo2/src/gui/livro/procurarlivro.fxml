@@ -24,5 +24,6 @@
             <Image url="@../../../../../Downloads/logojava.png" />
          </image>
       </ImageView>
+      <Button fx:id="btnAlugar" layoutX="133.0" layoutY="506.0" mnemonicParsing="false" onAction="#onBtnAlugar" style="-fx-background-color: #112024;" text="Alugar" textFill="WHITE" />
    </children>
 </Pane>

@@ -18,6 +18,14 @@ public class EditoraProcuraController {
 	private ListView<String> listViewEditoras;
 	@FXML
 	private Button btnCancelar;
+	
+	private String userName = null;
+    private int userId = -1;
+    
+	public void setUserTxtData(String userName, int userId) {
+		this.userName = userName;
+		this.userId = userId;
+	}
 
 	@FXML
 	private void onProcurarClick() {

@@ -30,7 +30,14 @@ public class ProcurarController {
     private ListView<String> listViewUsuarios;
     
     
-
+    private String userName = null;
+    private int userId = -1;
+    
+	public void setUserTxtData(String userName, int userId) {
+		this.userName = userName;
+		this.userId = userId;
+	}
+    
     @FXML
     private void onBtnPesquisarClick() {
         String nomeBusca = txtNomeProcurar.getText().trim();

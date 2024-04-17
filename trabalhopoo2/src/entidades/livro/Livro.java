@@ -1,12 +1,18 @@
 package entidades.livro;
 
-public class Livro {
+import java.util.ArrayList;
+import java.util.List;
+
+import interfaces.LivroObserver;
+
+public class Livro{
     private String editora;
     private String titulo;
     private String autor;
     private int numeroPaginas;
     private String categoria;
     private int quantidade;
+    private List<LivroObserver> observers = new ArrayList<>();
 
     public Livro(String editora, String titulo, String autor, int numeroPaginas, String categoria, int quantidade) {
         this.editora = editora;
@@ -15,6 +21,21 @@ public class Livro {
         this.numeroPaginas = numeroPaginas;
         this.categoria = categoria;
         this.quantidade = quantidade;
+    }
+    
+ // Métodos para gerenciar observadores
+    public void addObserver(LivroObserver observer) {
+        observers.add(observer);
+    }
+
+    public void removeObserver(LivroObserver observer) {
+        observers.remove(observer);
+    }
+
+    private void notifyObservers() {
+        for (LivroObserver observer : observers) {
+            observer.update(this);
+        }
     }
 
     // Getters e setters
@@ -64,6 +85,7 @@ public class Livro {
 
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
+        notifyObservers();
     }
 
     @Override

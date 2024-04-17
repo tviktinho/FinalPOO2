@@ -12,7 +12,7 @@ public class MainApp extends Application {
     public void start(Stage primaryStage) {
         try {
             // Substitua "login.fxml" pelo FXML que você deseja carregar como tela inicial
-            Parent root = FXMLLoader.load(getClass().getResource("/gui/index.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/gui/login.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.setTitle("Sistema de Livraria");

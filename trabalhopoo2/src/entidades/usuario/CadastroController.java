@@ -49,9 +49,10 @@ public class CadastroController {
         String senha = pwdSenha.getText();
         String telefone = txtTelefone.getText();
         String confirmarSenha = pwdConfirmarSenha.getText();
+        
 
         if(validarDados(nome, email, senha, confirmarSenha)) {
-            Usuario novoUsuario = new Usuario(nome, email, senha, telefone);
+            Usuario novoUsuario = new Usuario(nome, email, senha, telefone, GerenciadorBD.getInstancia().getNovoIdUsuario());
             GerenciadorBD.getInstancia().salvarUsuario(novoUsuario);
             lblMensagem.setText("Cadastro realizado com sucesso!");
         } else {

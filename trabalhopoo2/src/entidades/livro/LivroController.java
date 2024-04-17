@@ -3,6 +3,7 @@ package entidades.livro;
 import java.io.IOException;
 
 import application.GerenciadorBD;
+import application.IndexController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,6 +26,13 @@ public class LivroController {
     @FXML private Button btnCancel;
     @FXML private Label lblMensagem;
    
+    private String userName = null;
+    private int userId = -1;
+    
+	public void setUserTxtData(String userName, int userId) {
+		this.userName = userName;
+		this.userId = userId;
+	}
 
     @FXML
     protected void onBtnCadastrarClick() {
@@ -56,15 +64,20 @@ public class LivroController {
  // Chamado para fechar a janela sem salvar
     @FXML
 	private void onBtnCancelarClick() {
-		try {
-			Stage stage = (Stage) btnCancel.getScene().getWindow();
-			Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/gui/index.fxml")));
-			stage.setScene(scene);
-			stage.show();
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.out.println("Erro ao carregar a cena: /gui/index.fxml");
-		}
+    	try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/index.fxml"));
+            Stage stage = (Stage) btnCancel.getScene().getWindow();
+            Scene scene = new Scene(loader.load());
+
+            IndexController controller = loader.getController();
+            controller.setUserTxtData(userName, userId); // Passa os dados do usuário
+
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Erro ao carregar a cena: /gui/livro/procurarlivro.fxml");
+        }
 		
 	}
 }

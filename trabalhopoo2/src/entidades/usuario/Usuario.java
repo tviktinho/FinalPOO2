@@ -1,16 +1,18 @@
 package entidades.usuario;
 
-public class Usuario {
+public class Usuario{
     private String nome;
     private String email;
     private String senha;
     private String telefone;
+    private int id;
 
-    public Usuario(String nome, String email, String senha, String telefone) {
+    public Usuario(String nome, String email, String senha, String telefone, int id) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.telefone = telefone;
+        this.id = id;
     }
 
     // Getters e Setters
@@ -49,5 +51,10 @@ public class Usuario {
     public String toString() {
         return nome + " - " + email + " - " + telefone;
     }
+    
+	public int getId() {
+		return id;
+	}
+	
 }
 
