@@ -2,8 +2,15 @@ package entidades.livro;
 
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+
 import application.GerenciadorBD;
 
 public class LivroProcuraController {
@@ -12,6 +19,7 @@ public class LivroProcuraController {
     @FXML private TextField txtEditora;
     @FXML private TextField txtAutor;
     @FXML private ListView<String> listViewLivros;
+    @FXML private Button btnCancelar;
 
     @FXML
     private void onBuscarClick() {
@@ -19,12 +27,18 @@ public class LivroProcuraController {
     }
 
     @FXML
-    private void onCancelar() {
-        txtTitulo.clear();
-        txtEditora.clear();
-        txtAutor.clear();
-        listViewLivros.getItems().clear();
-    }
+   	private void onBtnCancelarClick() {
+   		try {
+   			Stage stage = (Stage) btnCancelar.getScene().getWindow();
+   			Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/gui/index.fxml")));
+   			stage.setScene(scene);
+   			stage.show();
+   		} catch (IOException e) {
+   			e.printStackTrace();
+   			System.out.println("Erro ao carregar a cena: /gui/index.fxml");
+   		}
+   		
+   	}
     
     
 

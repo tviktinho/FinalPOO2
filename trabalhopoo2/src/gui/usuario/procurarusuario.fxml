@@ -11,7 +11,7 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="317.0" style="-fx-background-color: #aac9c6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="entidades.usuario.ProcurarController">
    <children>
       <Button fx:id="btnPesquisar" layoutX="24.0" layoutY="564.0" mnemonicParsing="false" onAction="#onBtnPesquisarClick" style="-fx-background-color: #112024;" text="Procurar" textFill="WHITE" />
-      <Button fx:id="btnCancelar" layoutX="231.0" layoutY="564.0" mnemonicParsing="false" style="-fx-background-color: #112024;" text="Cancelar" textFill="WHITE" />
+      <Button fx:id="btnCancelar" layoutX="231.0" layoutY="564.0" mnemonicParsing="false" onAction="#onBtnCancelarClick" style="-fx-background-color: #112024;" text="Cancelar" textFill="WHITE" />
       <Label layoutX="31.0" layoutY="168.0" text="Nome" />
       <TextField fx:id="txtNomeProcurar" layoutX="114.0" layoutY="164.0" />
       <Label layoutX="33.0" layoutY="205.0" text="Email" />

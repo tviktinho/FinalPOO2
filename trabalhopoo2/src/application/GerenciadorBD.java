@@ -23,7 +23,7 @@ public class GerenciadorBD {
     
     public boolean validarUsuario(String username, String password) {
         for (Usuario usuario : usuarios) {
-            if (usuario.getNome().equalsIgnoreCase(username) && usuario.getSenha().equals(password)) {
+            if (usuario.getEmail().equalsIgnoreCase(username) && usuario.getSenha().equals(password)) {
                 return true;
             }
         }

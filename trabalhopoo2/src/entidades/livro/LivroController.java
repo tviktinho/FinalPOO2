@@ -22,7 +22,9 @@ public class LivroController {
     @FXML private TextField txtCategoria;
     @FXML private TextField txtQuantidade;
     @FXML private Button btnPesquisar;
+    @FXML private Button btnCancel;
     @FXML private Label lblMensagem;
+   
 
     @FXML
     protected void onBtnCadastrarClick() {
@@ -50,5 +52,20 @@ public class LivroController {
                !numeroPaginas.isEmpty() && numeroPaginas.matches("\\d+") && // verifica se é um número
                !categoria.isEmpty() && !quantidade.isEmpty() && quantidade.matches("\\d+"); // verifica se é um número
     }
+    
+ // Chamado para fechar a janela sem salvar
+    @FXML
+	private void onBtnCancelarClick() {
+		try {
+			Stage stage = (Stage) btnCancel.getScene().getWindow();
+			Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/gui/index.fxml")));
+			stage.setScene(scene);
+			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("Erro ao carregar a cena: /gui/index.fxml");
+		}
+		
+	}
 }
 

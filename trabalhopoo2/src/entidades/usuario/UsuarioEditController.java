@@ -1,10 +1,13 @@
 package entidades.usuario;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.List;
 
 public class UsuarioEditController {
@@ -19,8 +22,6 @@ public class UsuarioEditController {
     private TextField txtEmail;
     @FXML
     private TextField txtTelefone;
-    // Adicione mais campos conforme necessário
-
     @FXML
     private Button btnSave;
     @FXML
@@ -78,9 +79,18 @@ public class UsuarioEditController {
 
     // Chamado para fechar a janela sem salvar
     @FXML
-    private void handleCancelar() {
-        closeStage();
-    }
+	private void onBtnCancelarClick() {
+		try {
+			Stage stage = (Stage) btnCancel.getScene().getWindow();
+			Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/gui/index.fxml")));
+			stage.setScene(scene);
+			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("Erro ao carregar a cena: /gui/index.fxml");
+		}
+		
+	}
 
     // Método para fechar a janela atual
     private void closeStage() {
