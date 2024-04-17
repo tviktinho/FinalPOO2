@@ -15,7 +15,7 @@
       <TextField layoutX="114.0" layoutY="164.0" />
       <ImageView fitHeight="163.0" fitWidth="202.0" layoutX="77.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Downloads/logojava.png" />
+            <Image url="@../../../../logojava.png" />
          </image>
       </ImageView>
    </children>

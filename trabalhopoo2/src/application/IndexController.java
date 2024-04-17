@@ -192,7 +192,7 @@ public class IndexController implements LivroObserver{
     @FXML
     private void handleGoToProcurarEditora() {
     	try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/editora/procuraeditora.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/editora/procurareditora.fxml"));
             Stage stage = (Stage) btnSearchEdit.getScene().getWindow();
             Scene scene = new Scene(loader.load());
 

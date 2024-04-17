@@ -24,7 +24,7 @@
       <TextField fx:id="txtQuantidade" layoutX="143.0" layoutY="278.0" />
       <ImageView fitHeight="163.0" fitWidth="202.0" layoutX="76.0" layoutY="-23.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Downloads/logojava.png" />
+            <Image url="@../../../../logojava.png" />
          </image></ImageView>
       <TextField fx:id="txtCategoria" layoutX="143.0" layoutY="307.0" />
       <Label fx:id="lblMensagem" layoutX="145.0" layoutY="116.0" />

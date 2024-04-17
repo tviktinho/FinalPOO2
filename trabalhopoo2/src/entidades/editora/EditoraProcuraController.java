@@ -3,6 +3,7 @@ package entidades.editora;
 import java.io.IOException;
 
 import application.GerenciadorBD;
+import application.IndexController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -19,8 +20,9 @@ public class EditoraProcuraController {
 	@FXML
 	private Button btnCancelar;
 	
-	private String userName = null;
-    private int userId = -1;
+    private String userName;
+    private int userId;
+    
     
 	public void setUserTxtData(String userName, int userId) {
 		this.userName = userName;
@@ -38,18 +40,22 @@ public class EditoraProcuraController {
 		}
 	}
 
-	@FXML
-	private void onBtnCancelarClick() {
-		try {
-			Stage stage = (Stage) btnCancelar.getScene().getWindow();
-			Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/gui/index.fxml")));
-			stage.setScene(scene);
-			stage.show();
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.out.println("Erro ao carregar a cena: /gui/index.fxml");
-		}
+    @FXML
+	public void onBtnCancelarClick() {
+    	try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/index.fxml"));
+            Stage stage = (Stage) btnCancelar.getScene().getWindow();
+            Scene scene = new Scene(loader.load());
 
+            IndexController controller = loader.getController();
+            controller.setUserTxtData(userName, userId); 
+
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Erro ao carregar a cena: /gui/livro/procurareditora.fxml");
+        }
 	}
 
 }

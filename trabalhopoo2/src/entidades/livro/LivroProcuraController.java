@@ -73,14 +73,14 @@ public class LivroProcuraController {
     }
 
     @FXML
-   	private void onBtnCancelarClick() {
+	public void onBtnCancelarClick() {
     	try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/index.fxml"));
             Stage stage = (Stage) btnCancelar.getScene().getWindow();
             Scene scene = new Scene(loader.load());
 
             IndexController controller = loader.getController();
-            controller.setUserTxtData(userName, userId); // Passa os dados do usuário
+            controller.setUserTxtData(userName, userId); 
 
             stage.setScene(scene);
             stage.show();
@@ -88,8 +88,7 @@ public class LivroProcuraController {
             e.printStackTrace();
             System.out.println("Erro ao carregar a cena: /gui/livro/procurarlivro.fxml");
         }
-   		
-   	}
+	}
 
     private void atualizarLista() {
         listViewLivros.getItems().clear();

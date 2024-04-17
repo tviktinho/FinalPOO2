@@ -79,6 +79,4 @@ public class CadastroController {
             e.printStackTrace();
         }
     }
-
-    
 }

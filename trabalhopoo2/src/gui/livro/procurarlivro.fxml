@@ -21,7 +21,7 @@
       <ListView fx:id="listViewLivros" layoutX="58.0" layoutY="256.0" prefHeight="200.0" prefWidth="200.0" />
       <ImageView fitHeight="163.0" fitWidth="202.0" layoutX="76.0" layoutY="-31.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Downloads/logojava.png" />
+            <Image url="@../../../../logojava.png" />
          </image>
       </ImageView>
       <Button fx:id="btnAlugar" layoutX="133.0" layoutY="506.0" mnemonicParsing="false" onAction="#onBtnAlugar" style="-fx-background-color: #112024;" text="Alugar" textFill="WHITE" />

@@ -17,7 +17,7 @@
       <Label fx:id="lblStatus" layoutX="160.0" layoutY="114.0" />
       <ImageView fitHeight="163.0" fitWidth="202.0" layoutX="92.0" layoutY="-32.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../Downloads/logojava.png" />
+            <Image url="@../../../logojava.png" />
          </image>
       </ImageView>
    </children>

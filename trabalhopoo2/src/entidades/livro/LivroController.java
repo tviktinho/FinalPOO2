@@ -78,7 +78,6 @@ public class LivroController {
             e.printStackTrace();
             System.out.println("Erro ao carregar a cena: /gui/livro/procurarlivro.fxml");
         }
-		
 	}
 }
 
