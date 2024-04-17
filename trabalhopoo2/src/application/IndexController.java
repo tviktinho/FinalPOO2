@@ -1,72 +1,67 @@
 package application;
 
+import javafx.fxml.FXML;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
+import javafx.fxml.FXMLLoader;
 import java.io.IOException;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import javafx.scene.Node;
 public class IndexController {
+    
+    @FXML private Button btnCadUser;
+    @FXML private Button btnSearchUser;
+    @FXML private Button btnEditUser;
+    @FXML private Button btnCadLivro;
+    @FXML private Button btnSearchLivro;
+    @FXML private Button btnCadEdit;
+    @FXML private Button btnSearchEdit;
 
-    @FXML
-    private void handleCadastrarUsuario(ActionEvent event) {
-    	Node source = (Node) event.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        loadScene("/gui/usuario/cadastrousuario.fxml", stage);
-    }
-
-    @FXML
-    private void handleProcurarUsuario(ActionEvent event) {
-    	Node source = (Node) event.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        loadScene("/gui/usuario/procurarusuario.fxml", stage);
-    }
-
-    @FXML
-    private void handleCadastrarLivro(ActionEvent event) {
-    	Node source = (Node) event.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        loadScene("/gui/livro/cadastrolivro.fxml", stage);
-    }
-
-    @FXML
-    private void handleProcurarLivro(ActionEvent event) {
-    	Node source = (Node) event.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        loadScene("/gui/livro/procurarlivro.fxml", stage);
-    }
-
-    @FXML
-    private void handleCadastrarEditora(ActionEvent event) {
-    	Node source = (Node) event.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        loadScene("/gui/editora/cadastroeditora.fxml", stage);
-    }
-
-    @FXML
-    private void handleProcurarEditora(ActionEvent event) {
-    	Node source = (Node) event.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        loadScene("/gui/editora/procurareditora.fxml", stage);
-    }
-
-    private void loadScene(String fxmlFile, Stage stage) {
+    private void loadScene(String fxmlPath, Button btn) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
+            Stage stage = (Stage) btn.getScene().getWindow();
+            Scene scene = new Scene(FXMLLoader.load(getClass().getResource(fxmlPath)));
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("Erro ao carregar a cena: " + fxmlFile);
+            System.out.println("Erro ao carregar a cena: " + fxmlPath);
         }
     }
 
+    @FXML
+    private void handleGoToCadastrarUsuario() {
+        loadScene("/gui/usuario/cadastrousuario.fxml", btnCadUser);
+    }
 
+    @FXML
+    private void handleGoToProcurarUsuario() {
+        loadScene("/gui/usuario/procurarusuario.fxml", btnSearchUser);
+    }
+    
+    @FXML
+    private void handleGoToEditarUsuario() {
+        loadScene("/gui/usuario/editarusuario.fxml", btnEditUser);
+    }
 
+    @FXML
+    private void handleGoToCadastrarLivro() {
+        loadScene("/gui/livro/cadastrolivro.fxml", btnCadLivro);
+    }
+
+    @FXML
+    private void handleGoToProcurarLivro() {
+        loadScene("/gui/livro/procurarlivro.fxml", btnSearchLivro);
+    }
+
+    @FXML
+    private void handleGoToCadastrarEditora() {
+        loadScene("/gui/editora/cadastroeditora.fxml", btnCadEdit);
+    }
+
+    @FXML
+    private void handleGoToProcurarEditora() {
+        loadScene("/gui/editora/procurareditora.fxml", btnSearchEdit);
+    }
 
 }

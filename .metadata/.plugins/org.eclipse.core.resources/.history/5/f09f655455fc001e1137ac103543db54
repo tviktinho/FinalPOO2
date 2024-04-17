@@ -1,0 +1,56 @@
+package application;
+
+import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.stage.Stage;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.fxml.FXMLLoader;
+import java.io.IOException;
+
+public class IndexController {
+
+    private void loadScene(String fxmlPath, Node node) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent root = loader.load();
+            Stage stage = (Stage) node.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleCadastrarUsuario(Node node) {
+        loadScene("/gui/usuario/cadastrousuario.fxml", node);
+    }
+
+    @FXML
+    private void handleProcurarUsuario(Node node) {
+        loadScene("/gui/usuario/procurarusuario.fxml", node);
+    }
+
+    @FXML
+    private void handleCadastrarLivro(Node node) {
+        loadScene("/gui/livro/cadastrolivro.fxml", node);
+    }
+
+    @FXML
+    private void handleProcurarLivro(Node node) {
+        loadScene("/gui/livro/procurarlivro.fxml", node);
+    }
+
+    @FXML
+    private void handleCadastrarEditora(Node node) {
+        loadScene("/gui/editora/cadastroeditora.fxml", node);
+    }
+
+    @FXML
+    private void handleProcurarEditora(Node node) {
+        loadScene("/gui/editora/procurareditora.fxml", node);
+    }
+
+    // Adicione mais métodos conforme necessário para os outros botões
+}

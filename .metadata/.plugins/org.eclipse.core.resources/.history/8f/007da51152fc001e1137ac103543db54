@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #aac9c6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.IndexController">
+   <children>
+      <ImageView fitHeight="163.0" fitWidth="202.0" layoutX="218.0" layoutY="223.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Downloads/logojava.png" />
+         </image>
+      </ImageView>
+      <MenuButton layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="135.0" style="-fx-background-color: #112024;" text="Usuário" textFill="WHITE">
+        <items> 
+          <MenuItem fx:id="btnCadUser" mnemonicParsing="false" onAction="#handleMenuItemCadastrarUsuario" text="Cadastrar" />
+          <MenuItem mnemonicParsing="false" text="Editar" />
+          <MenuItem mnemonicParsing="false" onAction="#handleProcurarUsuario" text="Procurar" />
+          <MenuItem mnemonicParsing="false" text="Listar todos" />
+        </items>
+      </MenuButton>
+      <MenuButton layoutX="451.0" layoutY="14.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="135.0" style="-fx-background-color: #112024;" text="Livros" textFill="WHITE">
+         <items>
+          <MenuItem mnemonicParsing="false" onAction="#handleCadastrarLivro" text="Cadastrar" />
+          <MenuItem mnemonicParsing="false" text="Alugar" />
+          <MenuItem mnemonicParsing="false" text="Editar" />
+          <MenuItem mnemonicParsing="false" onAction="#handleProcurarLivro" text="Procurar" />
+          <MenuItem mnemonicParsing="false" text="Listar todos" />
+          <MenuItem mnemonicParsing="false" text="Deletar" />
+         </items>
+      </MenuButton>
+      <MenuButton layoutX="233.0" layoutY="14.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="135.0" style="-fx-background-color: #112024;" text="Editoras" textFill="WHITE">
+         <items>
+          <MenuItem mnemonicParsing="false" onAction="#handleCadastrarEditora" text="Cadastrar" />
+          <MenuItem mnemonicParsing="false" text="Editar" />
+          <MenuItem mnemonicParsing="false" onAction="#handleProcurarEditora" text="Procurar" />
+          <MenuItem mnemonicParsing="false" text="Listar todos" />
+         </items>
+      </MenuButton>
+   </children>
+</Pane>

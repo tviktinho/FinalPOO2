@@ -1,0 +1,28 @@
+package application;
+
+import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.stage.Stage;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import java.io.IOException;
+
+public class IndexController {
+	
+	@FXML private Button btnCadUser;
+	@FXML private Button btnSearchUser;
+	@FXML private Button btnCadLivro;
+	@FXML private Button btnSearchLivro;
+	@FXML private Button btnCadEdit;
+	@FXML private Button btnSearchEdit;
+	
+	
+	
+	
+	
+	
+}
+

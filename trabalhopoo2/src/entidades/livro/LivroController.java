@@ -50,10 +50,5 @@ public class LivroController {
                !numeroPaginas.isEmpty() && numeroPaginas.matches("\\d+") && // verifica se é um número
                !categoria.isEmpty() && !quantidade.isEmpty() && quantidade.matches("\\d+"); // verifica se é um número
     }
-
-    @FXML
-    private void onCancelar() {
-        // Lógica para cancelar o cadastro
-    }
 }
 

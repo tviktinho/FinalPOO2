@@ -35,8 +35,13 @@ public class EditoraController {
         }
     }
 
-    @FXML
-    protected void onCancelarClick() {
-        txtNome.clear();
+    private void handleVoltar() {
+        try {
+            Stage stage = (Stage) txtNome.getScene().getWindow();
+            Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/gui/index.fxml")));
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

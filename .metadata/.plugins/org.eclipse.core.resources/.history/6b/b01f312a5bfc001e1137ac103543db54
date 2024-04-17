@@ -1,0 +1,45 @@
+package entidades.usuario;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+public class UsuarioEditController {
+
+    @FXML
+    private TextField txtNome;
+    @FXML
+    private TextField txtEmail;
+    @FXML
+    private TextField txtTelefone;
+
+    private Usuario usuario; // Suponha que Usuario é uma classe que representa o usuário
+
+    // Método para inicializar o controlador com um usuário
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+        txtNome.setText(usuario.getNome());
+        txtEmail.setText(usuario.getEmail());
+        txtTelefone.setText(usuario.getTelefone());
+    }
+
+    @FXML
+    private void handleSalvar() {
+        usuario.setNome(txtNome.getText());
+        usuario.setEmail(txtEmail.getText());
+        usuario.setTelefone(txtTelefone.getText());
+
+        // Aqui você pode adicionar chamadas para salvar esses dados no banco de dados
+        closeStage();
+    }
+
+    @FXML
+    private void handleCancelar() {
+        closeStage();
+    }
+
+    private void closeStage() {
+        Stage stage = (Stage) txtNome.getScene().getWindow();
+        stage.close();
+    }
+}

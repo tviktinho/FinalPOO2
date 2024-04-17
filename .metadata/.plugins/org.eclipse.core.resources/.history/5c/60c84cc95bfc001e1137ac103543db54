@@ -1,0 +1,89 @@
+package entidades.usuario;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
+
+import java.util.List;
+
+public class UsuarioEditController {
+
+    private List<Usuario> usuarios;
+    private int usuarioIndex;
+    private Usuario usuarioAtual;
+
+    @FXML
+    private TextField txtNome;
+    @FXML
+    private TextField txtEmail;
+    @FXML
+    private TextField txtTelefone;
+    // Adicione mais campos conforme necessário
+
+    @FXML
+    private Button btnSave;
+    @FXML
+    private Button btnCancel;
+
+    // Inicializa o controlador com a lista de usuários e o índice do usuário a editar
+    public void initData(List<Usuario> usuarios, int usuarioIndex) {
+        this.usuarios = usuarios;
+        this.usuarioIndex = usuarioIndex;
+        if (usuarioIndex >= 0 && usuarioIndex < usuarios.size()) {
+            this.usuarioAtual = usuarios.get(usuarioIndex);
+            updateUI();
+        } else {
+            System.out.println("Erro: Índice do usuário inválido.");
+        }
+    }
+
+    // Atualiza os campos da interface com as informações do usuário
+    private void updateUI() {
+        if (usuarioAtual != null) {
+            txtNome.setText(usuarioAtual.getNome());
+            txtEmail.setText(usuarioAtual.getEmail());
+            txtTelefone.setText(usuarioAtual.getEmail());
+            // Continue atualizando outros campos
+        }
+    }
+
+    // Chamado quando o usuário clica em salvar
+    @FXML
+    private void handleSalvar() {
+        if (usuarioAtual != null) {
+            usuarioAtual.setNome(txtNome.getText());
+            usuarioAtual.setEmail(txtEmail.getText());
+            // Atualize outras propriedades do usuário conforme necessário
+
+            // Atualiza o usuário na lista
+            usuarios.set(usuarioIndex, usuarioAtual);
+
+            // Chama a função para simular a salvamento no "banco de dados"
+            salvarUsuario(usuarioAtual);
+
+            // Fechar a janela após salvar
+            closeStage();
+        } else {
+            System.out.println("Erro: Não há usuário para salvar.");
+        }
+    }
+
+    // Simula salvar o usuário no banco de dados ou serviço
+    private void salvarUsuario(Usuario usuario) {
+        System.out.println("Usuário '" + usuario.getNome() + "' atualizado com sucesso!");
+        // Aqui você adicionaria a lógica para persistir o usuário alterado no banco de dados
+    }
+
+    // Chamado para fechar a janela sem salvar
+    @FXML
+    private void handleCancelar() {
+        closeStage();
+    }
+
+    // Método para fechar a janela atual
+    private void closeStage() {
+        Stage stage = (Stage) btnSave.getScene().getWindow();
+        stage.close();
+    }
+}

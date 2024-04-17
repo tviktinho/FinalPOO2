@@ -22,7 +22,7 @@
       <PasswordField fx:id="pwdSenha" layoutX="114.0" layoutY="268.0" />
       <Label id="txtSenha" layoutX="17.0" layoutY="308.0" text="Confirmar senha" />
       <PasswordField fx:id="pwdConfirmarSenha" layoutX="114.0" layoutY="304.0" />
-      <Label fx:id="lblMensagem" layoutX="167.0" layoutY="355.0" />
+      <Label fx:id="lblMensagem" layoutX="72.0" layoutY="355.0" />
       <ImageView fitHeight="163.0" fitWidth="202.0" layoutX="86.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../Downloads/logojava.png" />

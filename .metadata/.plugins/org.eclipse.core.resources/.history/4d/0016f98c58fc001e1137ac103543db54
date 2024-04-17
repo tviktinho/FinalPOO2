@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UsuarioEditController">
+    <children>
+        <Label text="Nome:" layoutX="14" layoutY="14" />
+        <TextField fx:id="txtNome" layoutX="14" layoutY="34" prefWidth="200" />
+
+        <Label text="Email:" layoutX="14" layoutY="74" />
+        <TextField fx:id="txtEmail" layoutX="14" layoutY="94" prefWidth="200" />
+
+        <Label text="Telefone:" layoutX="14" layoutY="134" />
+        <TextField fx:id="txtTelefone" layoutX="14" layoutY="154" prefWidth="200" />
+
+        <Button text="Salvar" layoutX="14" layoutY="194" onAction="#handleSalvar"/>
+        <Button text="Cancelar" layoutX="114" layoutY="194" onAction="#handleCancelar"/>
+    </children>
+</AnchorPane>
