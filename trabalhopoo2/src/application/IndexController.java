@@ -40,14 +40,24 @@ public class IndexController implements LivroObserver{
     @Override
     public void update(Livro livro) {
         String message = "Notificação: O livro '" + livro.getTitulo() + "' agora tem " + livro.getQuantidade() + " unidades disponíveis.";
-        Platform.runLater(() -> updateNotification(message)); 
+        System.out.println("Attempting to update notification: " + message);
+        // Garantindo que a atualização da UI ocorra na JavaFX Application Thread
+        Platform.runLater(() -> {
+            updateNotification(message);
+        });
     }
 
     private void updateNotification(String message) {
         if (txtNotification != null) {
+            System.out.println("Notification should now be visible.");
             txtNotification.setText(message);
+        } else {
+            System.out.println("txtNotification is null");
         }
     }
+
+
+
 
     @FXML
     private void handleLogout() {
@@ -84,19 +94,6 @@ public class IndexController implements LivroObserver{
         txtUserId.setText(String.valueOf(userId));
     }
     
-    @FXML
-    private void handleGoToCadastrarUsuario() {
-    	try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/usuario/cadastrousuario.fxml"));
-            Stage stage = (Stage) btnCadUser.getScene().getWindow();
-            Scene scene = new Scene(loader.load());
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Erro ao carregar a cena: /gui/livro/procurarlivro.fxml");
-        }
-    }
 
     @FXML
     private void handleGoToProcurarUsuario() {
@@ -206,5 +203,10 @@ public class IndexController implements LivroObserver{
             System.out.println("Erro ao carregar a cena: /gui/livro/procurarlivro.fxml");
         }
     }
+    
+    public void registerAsObserver() {
+        GerenciadorBD.getInstancia().registerObserver(this);
+    }
+
 
 }

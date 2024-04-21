@@ -44,9 +44,10 @@ public class GerenciadorBD {
 
 	// Método para adicionar observador aos livros
 	public void registerObserver(IndexController observer) {
-		for (Livro livro : livros) {
-			livro.addObserver(observer);
-		}
+	    this.indexController = observer;
+	    for (Livro livro : livros) {
+	        livro.addObserver(observer);
+	    }
 	}
 
 	public boolean validarUsuario(String username, String password) {

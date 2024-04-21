@@ -73,22 +73,23 @@ public class LivroProcuraController {
     }
 
     @FXML
-	public void onBtnCancelarClick() {
-    	try {
+    public void onBtnCancelarClick() {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/index.fxml"));
             Stage stage = (Stage) btnCancelar.getScene().getWindow();
-            Scene scene = new Scene(loader.load());
+            stage.setScene(new Scene(loader.load()));
 
             IndexController controller = loader.getController();
-            controller.setUserTxtData(userName, userId); 
+            controller.setUserTxtData(userName, userId); // Assegura que o usuário está corretamente logado.
+            GerenciadorBD.getInstancia().registerObserver(controller); // Re-registra o observador
 
-            stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("Erro ao carregar a cena: /gui/livro/procurarlivro.fxml");
+            System.out.println("Erro ao carregar a cena: /gui/index.fxml");
         }
-	}
+    }
+
 
     private void atualizarLista() {
         listViewLivros.getItems().clear();

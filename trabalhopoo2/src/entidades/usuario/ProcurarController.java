@@ -65,7 +65,6 @@ public class ProcurarController {
             e.printStackTrace();
             System.out.println("Erro ao carregar a cena: /gui/livro/procurarlivro.fxml");
         }
-		
 	}
 	
 	

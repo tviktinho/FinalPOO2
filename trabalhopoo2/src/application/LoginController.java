@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -12,47 +13,46 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class LoginController {
-	
+    
     @FXML
     private TextField txtUsername;
-    
-    private int idUser;
-
     @FXML
     private PasswordField txtPassword;
-
     @FXML
     private Label lblStatus;
-    
     @FXML
     private Button btnLogin;
+    
+    private int idUser;
 
     @FXML
     private void handleLogin() {
         String username = txtUsername.getText();
         String password = txtPassword.getText();
-        
 
         if (GerenciadorBD.getInstancia().validarUsuario(username, password)) {
-            lblStatus.setText("Login bem-sucedido!");
-            idUser = GerenciadorBD.getInstancia().getIdUsuario(username);
-            IndexController indexController = new IndexController();
-            GerenciadorBD.getInstancia().registerObserver(indexController);
-            openIndexView(idUser);
+            System.out.println("Login bem-sucedido, configurando observador...");
+            this.idUser = GerenciadorBD.getInstancia().getIdUsuario(username);
+            openIndexView(this.idUser);
         } else {
-            lblStatus.setText("Falha no login. Usuário ou senha incorretos.");
+            System.out.println("Falha no login.");
         }
     }
 
+
     private void openIndexView(int idUser) {
         try {
-        	
-            // Carrega a vista de index
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/index.fxml"));
-            Stage stage = (Stage) txtUsername.getScene().getWindow(); // Pega o stage atual
+            Stage stage = (Stage) txtUsername.getScene().getWindow();
             Scene scene = new Scene(loader.load());
             IndexController controller = loader.getController();
-            controller.setUserTxtData(txtUsername.getText(), idUser); 
+            System.out.println("IndexController instanciado, configurando dados do usuário...");
+            controller.setUserTxtData(txtUsername.getText(), idUser);
+
+            // Registra o observador assim que o controlador é acessível
+            GerenciadorBD.getInstancia().registerObserver(controller);
+            System.out.println("Observador registrado.");
+
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
@@ -60,6 +60,10 @@ public class LoginController {
             lblStatus.setText("Falha ao carregar a tela de índice.");
         }
     }
+    
+    
+
+
     
     @FXML
     private void handleGoToCadastro() {
@@ -72,5 +76,3 @@ public class LoginController {
         }
     }
 }
-
-

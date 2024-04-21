@@ -33,6 +33,7 @@ public class Livro{
     }
 
     private void notifyObservers() {
+    	System.out.println("Notifying observers...");
         for (LivroObserver observer : observers) {
             observer.update(this);
         }
