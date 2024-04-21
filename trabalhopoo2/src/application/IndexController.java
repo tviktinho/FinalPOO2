@@ -20,7 +20,6 @@ import javafx.stage.Stage;
 
 public class IndexController implements LivroObserver{
     
-    @FXML private Button btnCadUser;
     @FXML private Button btnSearchUser;
     @FXML private Button btnEditUser;
     @FXML private Button btnCadLivro;
@@ -50,6 +49,7 @@ public class IndexController implements LivroObserver{
     private void updateNotification(String message) {
         if (txtNotification != null) {
             System.out.println("Notification should now be visible.");
+            System.out.println(message);
             txtNotification.setText(message);
         } else {
             System.out.println("txtNotification is null");
@@ -78,8 +78,7 @@ public class IndexController implements LivroObserver{
             stage.setScene(scene);
             stage.show();
             
-            // Fecha a cena atual do palco (stage)
-            Stage currentStage = (Stage) btnCadUser.getScene().getWindow(); // Altere btnCadUser para o botão correspondente ao seu login
+            Stage currentStage = (Stage) btnLogout.getScene().getWindow();
             currentStage.close();
         } catch (IOException e) {
             e.printStackTrace();
