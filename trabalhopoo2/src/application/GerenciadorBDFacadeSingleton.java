@@ -7,23 +7,21 @@ import entidades.editora.Editora;
 import entidades.livro.Livro;
 import entidades.usuario.Usuario;
 
-public class GerenciadorBDFacade {
-	private static GerenciadorBDFacade instancia;
+public class GerenciadorBDFacadeSingleton {
+    private static volatile GerenciadorBDFacadeSingleton instancia; // Volatile para garantir visibilidade entre threads
+    private List<Usuario> usuarios;
+    private List<Livro> livros;
+    private List<Editora> editoras;
 	private IndexController indexController;
 
-	// Simulando um banco de dados com uma estrutura de dados simples
-	private List<Usuario> usuarios;
-	private List<Livro> livros;
-	private List<Editora> editoras;
-	
-
-	private GerenciadorBDFacade() {
-		// Inicializa a lista que simula o banco de dados
-		this.usuarios = new ArrayList<>();
-		this.livros = new ArrayList<>();
-		this.editoras = new ArrayList<>();
-		popularDadosIniciais();
-	}
+    private GerenciadorBDFacadeSingleton() {
+        this.usuarios = new ArrayList<>();
+        this.livros = new ArrayList<>();
+        this.editoras = new ArrayList<>();
+        popularDadosIniciais();
+    }
+    
+    
 	
 
 	private void popularDadosIniciais() {
@@ -61,13 +59,17 @@ public class GerenciadorBDFacade {
 		return false;
 	}
 
-	public static synchronized GerenciadorBDFacade getInstancia() {
-		if (instancia == null) {
-			instancia = new GerenciadorBDFacade();
-		}
-		return instancia;
-	}
-
+	public static GerenciadorBDFacadeSingleton getInstancia() {
+        if (instancia == null) {  // Primeiro check sem bloqueio para melhorar desempenho
+            synchronized (GerenciadorBDFacadeSingleton.class) {  // Bloqueio
+                if (instancia == null) {  // Segundo check para garantir
+                    instancia = new GerenciadorBDFacadeSingleton();
+                }
+            }
+        }
+        return instancia;
+    }
+	
 	public int getIdUsuario(String username) {
 		for (Usuario usuario : usuarios) {
 			if (usuario.getEmail().equalsIgnoreCase(username)) {

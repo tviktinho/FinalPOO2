@@ -2,7 +2,7 @@ package entidades.livro;
 
 import java.io.IOException;
 
-import application.GerenciadorBDFacade;
+import application.GerenciadorBDFacadeSingleton;
 import application.IndexController;
 import entidades.usuario.ProcurarController;
 import javafx.fxml.FXML;
@@ -63,7 +63,7 @@ public class EditarLivroController {
         String titulo = parts[0];
 
         // Encontrar o livro no "banco de dados"
-        livroAtual = GerenciadorBDFacade.getInstancia().findLivroByTitulo(titulo);
+        livroAtual = GerenciadorBDFacadeSingleton.getInstancia().findLivroByTitulo(titulo);
         if (livroAtual != null) {
             txtTitulo.setText(livroAtual.getTitulo());
             txtEditora.setText(livroAtual.getEditora());
@@ -101,7 +101,7 @@ public class EditarLivroController {
             livroAtual.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
             livroAtual.setCategoria(txtCategoria.getValue());
 
-            GerenciadorBDFacade.getInstancia().atualizarLivro(livroAtual); // Assume que existe um método para atualizar livros
+            GerenciadorBDFacadeSingleton.getInstancia().atualizarLivro(livroAtual); // Assume que existe um método para atualizar livros
             System.out.println("Livro atualizado com sucesso!");
             handleCancelar();
         }
@@ -119,7 +119,7 @@ public class EditarLivroController {
              controller.setMessage(message);
              controller.setUserTxtData(userName, userId);
              
-             GerenciadorBDFacade.getInstancia().registerObserver(controller); // Re-registra o observador
+             GerenciadorBDFacadeSingleton.getInstancia().registerObserver(controller); // Re-registra o observador
              stage.show();
              
          } catch (IOException e) {

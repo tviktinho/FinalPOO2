@@ -3,7 +3,7 @@ package entidades.usuario;
 
 import java.io.IOException;
 
-import application.GerenciadorBDFacade;
+import application.GerenciadorBDFacadeSingleton;
 import application.IndexController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -44,7 +44,7 @@ public class ProcurarController {
         String nomeBusca = txtNomeProcurar.getText().trim();
 
         listViewUsuarios.getItems().clear(); // Limpa a lista antes de adicionar os novos resultados
-        GerenciadorBDFacade.getInstancia().getUsuarios().stream()
+        GerenciadorBDFacadeSingleton.getInstancia().getUsuarios().stream()
             .filter(u -> u.getNome().toLowerCase().contains(nomeBusca.toLowerCase()))
             .forEach(u -> listViewUsuarios.getItems().add(u.toString())); // Adiciona a representação string do usuário
     }

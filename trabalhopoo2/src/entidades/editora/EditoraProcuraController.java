@@ -2,7 +2,7 @@ package entidades.editora;
 
 import java.io.IOException;
 
-import application.GerenciadorBDFacade;
+import application.GerenciadorBDFacadeSingleton;
 import application.IndexController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,7 +33,7 @@ public class EditoraProcuraController {
 	private void onProcurarClick() {
 		String filtro = txtNomeBusca.getText().trim().toLowerCase();
 		listViewEditoras.getItems().clear();
-		for (Editora editora : GerenciadorBDFacade.getInstancia().getEditoras()) {
+		for (Editora editora : GerenciadorBDFacadeSingleton.getInstancia().getEditoras()) {
 			if (editora.getNome().toLowerCase().contains(filtro)) {
 				listViewEditoras.getItems().add(editora.getNome());
 			}

@@ -2,7 +2,7 @@ package entidades.livro;
 
 import java.io.IOException;
 
-import application.GerenciadorBDFacade;
+import application.GerenciadorBDFacadeSingleton;
 import application.IndexController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -47,7 +47,7 @@ public class LivroController {
             int numPaginas = Integer.parseInt(numeroPaginas);
             int quant = Integer.parseInt(quantidade);
             Livro novoLivro = new Livro(editora, titulo, autor, numPaginas, categoria, quant);
-            GerenciadorBDFacade.getInstancia().adicionarLivro(novoLivro);
+            GerenciadorBDFacadeSingleton.getInstancia().adicionarLivro(novoLivro);
             lblMensagem.setText("Cadastro realizado com sucesso!");
         } else {
             lblMensagem.setText("Erro ao cadastrar. Verifique os dados e tente novamente.");

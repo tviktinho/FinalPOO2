@@ -12,7 +12,7 @@ import javafx.scene.control.Label;
 
 import java.io.IOException;
 import javafx.scene.Node;
-import application.GerenciadorBDFacade;
+import application.GerenciadorBDFacadeSingleton;
 import application.IndexController;
 import interfaces.EditoraFactory;
 
@@ -42,7 +42,7 @@ public class EditoraController {
         if (!nome.isEmpty()) {
         	EditoraFactory editoraFactory = new SimpleEditoraFactory();
 			Editora novaEditora = editoraFactory.createEditora(nome);
-            GerenciadorBDFacade.getInstancia().adicionarEditora(novaEditora);
+            GerenciadorBDFacadeSingleton.getInstancia().adicionarEditora(novaEditora);
             lblMensagem.setText("Cadastro realizado com sucesso!");
             txtNome.clear(); // Limpa o campo após o cadastro
         } else {
