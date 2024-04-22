@@ -29,7 +29,6 @@
          <children>
             <Button fx:id="btnCadLivro" mnemonicParsing="false" onAction="#handleGoToCadastrarLivro" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #112024;" text="Cadastrar" textFill="WHITE" />
             <Button fx:id="btnSearchLivro" mnemonicParsing="false" onAction="#handleGoToProcurarLivro" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #112024;" text="Procurar" textFill="WHITE" />
-            <Button fx:id="btnEditLivro" mnemonicParsing="false" onAction="#handleGoToEditarLivro" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #112024;" text="Editar" textFill="WHITE" />
             <Button fx:id="btnDelLivro" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #112024;" text="Deletar" textFill="WHITE" />
             <Label alignment="CENTER" contentDisplay="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="6.0" prefWidth="100.0" text="Notificações" textAlignment="JUSTIFY" />
             <TextArea fx:id="txtNotification" prefHeight="93.0" prefWidth="100.0" wrapText="true" />

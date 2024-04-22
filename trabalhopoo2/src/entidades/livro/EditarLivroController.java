@@ -1,11 +1,10 @@
 package entidades.livro;
 
-import entidades.usuario.ProcurarController;
-
 import java.io.IOException;
 
 import application.GerenciadorBD;
 import application.IndexController;
+import entidades.usuario.ProcurarController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -32,6 +31,9 @@ public class EditarLivroController {
     private Button btnEditar;
     @FXML
     private Button btnCancelar;
+    
+    @FXML
+    private Button btnVoltar;
 
     private Livro livroAtual;
     
@@ -125,5 +127,27 @@ public class EditarLivroController {
              System.out.println("Erro ao carregar a cena: /gui/index.fxml");
          }
     }
+    
+    @FXML
+    private void handleVoltar() {
+        try {
+        	FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/usuario/procurarusuario.fxml"));
+			Stage stage = (Stage) btnVoltar.getScene().getWindow();
+			Scene scene = new Scene(loader.load());
+
+			ProcurarController controller = loader.getController();
+			controller.setUserTxtData(userName, userId); // Passa os dados do usuário
+
+			stage.setScene(scene);
+			stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Erro ao carregar a cena: /gui/livro/editarlivro.fxml");
+        }
+    }
+
+    
+    
+    
     
 }

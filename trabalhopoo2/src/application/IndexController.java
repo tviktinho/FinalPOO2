@@ -186,21 +186,7 @@ public class IndexController implements LivroObserver {
 		}
 	}
 	
-	@FXML
-	private void handleGoToBuscarLivroParaEditar() {
-	    try {
-	        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/livro/procurarLivroParaEditar.fxml"));
-	        Stage stage = new Stage();
-	        
-	        LivroProcuraController controller = loader.getController();
-			controller.setUserTxtData(userName, userId); // Passa os dados do usuário
-	        
-	        stage.setScene(new Scene(loader.load()));
-	        stage.show();
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    }
-	}
+	
 
 	@FXML
 	private void handleGoToEditarLivro() {

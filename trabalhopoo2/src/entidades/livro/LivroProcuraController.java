@@ -23,7 +23,9 @@ public class LivroProcuraController {
     @FXML private Button btnCancelar;
     @FXML private Button btnAlugar;
     @FXML private Button btnProcurar;
-
+    @FXML private Button btnEditLivro;
+    @FXML private Button btnVoltar;
+    
     private String userName;
     private int userId;
     String message;
@@ -32,6 +34,14 @@ public class LivroProcuraController {
         this.userName = userName;
         this.userId = userId;
     }
+    
+    public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
     
     @FXML
     private void onBuscarClick() {
@@ -122,7 +132,7 @@ public class LivroProcuraController {
             System.out.println("Selecione um livro para editar.");
         }
     }
-
+    
     
     @FXML
     private void onBtnDeletarClick() {
@@ -143,8 +153,25 @@ public class LivroProcuraController {
             System.out.println("Selecione um livro para deletar.");
         }
     }
-
-
+    
+    @FXML
+	private void handleGoToEditarLivro() {
+	    try {
+	        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/livro/editarlivro.fxml"));
+	        Stage stage = (Stage) btnEditLivro.getScene().getWindow();
+	        Scene scene = new Scene(loader.load());
+	        
+	        EditarLivroController controller = loader.getController();
+			controller.setUserTxtData(userName, userId); // Passa os dados do usuário
+			
+	        stage.setScene(scene);
+	        stage.show();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	        System.out.println("Erro ao carregar a cena: /gui/livro/editarlivro.fxml");
+	    }
+	}
+    
 
     private void atualizarLista() {
         listViewLivros.getItems().clear();

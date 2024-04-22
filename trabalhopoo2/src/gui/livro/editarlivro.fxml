@@ -29,6 +29,6 @@
       </ImageView>
       
       <Button fx:id="btnEditar" layoutX="18.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleSalvar" style="-fx-background-color: #112024;" text="Editar" textFill="WHITE" />
-      <Button fx:id="btnCancelar" layoutX="239.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleCancelar" style="-fx-background-color: #112024;" text="Voltar" textFill="WHITE" />
+      <Button fx:id="btnVoltar" layoutX="239.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleVoltar" style="-fx-background-color: #112024;" text="Voltar" textFill="WHITE" />
    </children>
 </Pane>

@@ -6,7 +6,6 @@ INDEX VERSION 1.134+C:\Users\loure\Desktop\MyKey\git\FinalPOO2\.metadata\.plugin
 2306014673.index
 1376526227.index
 1865797976.index
-4234329771.index
 2682580058.index
 3959137331.index
 2710516695.index
