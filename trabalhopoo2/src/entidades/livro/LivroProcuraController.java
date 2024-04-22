@@ -6,7 +6,6 @@ import application.GerenciadorBD;
 import application.IndexController;
 import entidades.mediator.BibliotecaMediator;
 import entidades.usuario.Usuario;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -27,17 +26,13 @@ public class LivroProcuraController {
 
     private String userName;
     private int userId;
-    private IndexController indexController;
+    String message;
 
     public void setUserTxtData(String userName, int userId) {
         this.userName = userName;
         this.userId = userId;
     }
-
-    public void setObserver(IndexController indexController) {
-        this.indexController = indexController;
-    }
-
+    
     @FXML
     private void onBuscarClick() {
         atualizarLista();
@@ -57,10 +52,8 @@ public class LivroProcuraController {
                 BibliotecaMediator mediator = new BibliotecaMediator();
                 if (mediator.alugarLivro(usuario, livro)) {
                     atualizarLista();
-                    if (indexController != null) {
-                        Platform.runLater(() -> indexController.update(livro));  // Assegura que a atualização ocorra na UI Thread
-                    }
                     System.out.println("Livro alugado com sucesso.");
+                    notificarIndexController(livro);
                 } else {
                     System.out.println("Falha ao alugar o livro.");
                 }
@@ -71,6 +64,21 @@ public class LivroProcuraController {
             System.out.println("Selecione um livro para alugar.");
         }
     }
+    
+    private void notificarIndexController(Livro livro) {
+        try {
+            // Você precisa garantir que esse FXMLLoader aponte para o IndexController corretamente
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/index.fxml"));
+            loader.load();  // Carrega os recursos mas não mostra a cena
+            IndexController controller = loader.getController();
+            controller.update(livro);  // Atualiza a informação no IndexController sem mudar a cena
+            message = controller.getMessage();  // Pega a mensagem de sucesso ou erro
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Erro ao carregar e atualizar o IndexController.");
+        }
+    }
+
 
     @FXML
     public void onBtnCancelarClick() {
@@ -79,8 +87,11 @@ public class LivroProcuraController {
             Stage stage = (Stage) btnCancelar.getScene().getWindow();
             stage.setScene(new Scene(loader.load()));
 
-            IndexController controller = loader.getController();
-            controller.setUserTxtData(userName, userId); // Assegura que o usuário está corretamente logado.
+            IndexController controller = loader.getController();            
+            
+            controller.setMessage(message);
+            controller.setUserTxtData(userName, userId);
+            
             GerenciadorBD.getInstancia().registerObserver(controller); // Re-registra o observador
 
             stage.show();

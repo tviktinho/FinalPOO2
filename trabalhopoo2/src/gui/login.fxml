@@ -10,10 +10,10 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="286.0" prefWidth="348.0" style="-fx-background-color: #aac9c6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginController">
    <children>
+      <TextField fx:id="txtUsername" layoutX="100.0" layoutY="143.0" promptText="Email" />
+      <PasswordField fx:id="txtPassword" layoutX="100.0" layoutY="182.0" promptText="Senha" />
       <Button fx:id="btnLogin" layoutX="54.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleLogin" style="-fx-background-color: #112024;" text="Login" textFill="WHITE" />
       <Button layoutX="249.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleGoToCadastro" style="-fx-background-color: #112024;" text="Cadastrar" textFill="WHITE" />
-      <PasswordField fx:id="txtPassword" layoutX="100.0" layoutY="182.0" promptText="Senha" />
-      <TextField fx:id="txtUsername" layoutX="100.0" layoutY="143.0" promptText="Email" />
       <Label fx:id="lblStatus" layoutX="160.0" layoutY="114.0" />
       <ImageView fitHeight="163.0" fitWidth="202.0" layoutX="92.0" layoutY="-32.0" pickOnBounds="true" preserveRatio="true">
          <image>

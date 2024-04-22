@@ -18,194 +18,209 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class IndexController implements LivroObserver{
-    
-    @FXML private Button btnSearchUser;
-    @FXML private Button btnEditUser;
-    @FXML private Button btnCadLivro;
-    @FXML private Button btnSearchLivro;
-    @FXML private Button btnCadEdit;
-    @FXML private Button btnSearchEdit;
-    @FXML private TextField txtUserName;
-    @FXML private TextField txtUserId;
-    @FXML private Button btnLogout;
-    @FXML private TextField txtNotification;
-    
-    
-    
-    private String userName = null;
-    private int userId = -1;
-    
-    @Override
-    public void update(Livro livro) {
-        String message = "Notificação: O livro '" + livro.getTitulo() + "' agora tem " + livro.getQuantidade() + " unidades disponíveis.";
-        System.out.println("Attempting to update notification: " + message);
-        // Garantindo que a atualização da UI ocorra na JavaFX Application Thread
-        Platform.runLater(() -> {
-            updateNotification(message);
-        });
-    }
+public class IndexController implements LivroObserver {
 
-    private void updateNotification(String message) {
-        if (txtNotification != null) {
-            System.out.println("Notification should now be visible.");
-            System.out.println(message);
-            txtNotification.setText(message);
-        } else {
-            System.out.println("txtNotification is null");
-        }
-    }
+	@FXML
+	private Button btnSearchUser;
+	@FXML
+	private Button btnEditUser;
+	@FXML
+	private Button btnCadLivro;
+	@FXML
+	private Button btnSearchLivro;
+	@FXML
+	private Button btnCadEdit;
+	@FXML
+	private Button btnSearchEdit;
+	@FXML
+	private TextField txtUserName;
+	@FXML
+	private TextField txtUserId;
+	@FXML
+	private Button btnLogout;
+	@FXML
+	private TextField txtNotification;
 
+	private String userName = null;
+	private int userId = -1;
+	private String message = "0 Notifications";
 
+	@FXML
+	public void initialize() {
+		registerAsObserver();
+	}
 
+	@Override
+	public void update(Livro livro) {
+		String message_notification = "Notificação: O livro '" + livro.getTitulo() + "' agora tem " + livro.getQuantidade()
+				+ " unidades disponíveis.";
+		System.out.println("Attempting to update notification: " + message_notification);
+		// Garantindo que a atualização da UI ocorra na JavaFX Application Thread
+		setMessage(message_notification);
+	}
 
-    @FXML
-    private void handleLogout() {
-        logoutUser();
-        redirectToLoginPage();
-    }
+	public String getMessage() {
+		return message;
+	}
 
-    private void logoutUser() {
-        // Aqui você pode limpar qualquer informação de sessão ou contexto do usuário
-        userName = null; // Limpa o nome do usuário
-        userId = -1; // Reseta o ID do usuário
-    }
-    
-    private void redirectToLoginPage() {
-        try {
-            Stage stage = new Stage(); // Cria uma nova instância de Stage para a tela de login
-            Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/gui/login.fxml")));
-            stage.setScene(scene);
-            stage.show();
-            
-            Stage currentStage = (Stage) btnLogout.getScene().getWindow();
-            currentStage.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Erro ao carregar a tela de login.");
-        }
-    }
+	public void setMessage(String message) {
+		this.message = message;
+	}
 
-    public void setUserTxtData(String userName, int userId) {
-        this.userName = userName;
-        this.userId = userId;
-        txtUserName.setText(userName);
-        txtUserId.setText(String.valueOf(userId));
-    }
-    
+	private void updateNotification(String message) {
+		if (txtNotification != null) {
+			txtNotification.setText(message);
+			System.out.println("Notification updated: " + message);
+		} else {
+			System.out.println("txtNotification is null");
+		}
+	}
 
-    @FXML
-    private void handleGoToProcurarUsuario() {
-    	try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/usuario/procurarusuario.fxml"));
-            Stage stage = (Stage) btnSearchUser.getScene().getWindow();
-            Scene scene = new Scene(loader.load());
+	@FXML
+	private void handleLogout() {
+		logoutUser();
+		redirectToLoginPage();
+	}
 
-            ProcurarController controller = loader.getController();
-            controller.setUserTxtData(userName, userId); // Passa os dados do usuário
+	private void logoutUser() {
+		// Aqui você pode limpar qualquer informação de sessão ou contexto do usuário
+		userName = null; // Limpa o nome do usuário
+		userId = -1; // Reseta o ID do usuário
+	}
 
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Erro ao carregar a cena: /gui/livro/procurarlivro.fxml");
-        }
-    }
-    
-    @FXML
-    private void handleGoToEditarUsuario() {
-    	try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/usuario/editarusuario.fxml"));
-            Stage stage = (Stage) btnEditUser.getScene().getWindow();
-            Scene scene = new Scene(loader.load());
+	private void redirectToLoginPage() {
+		try {
+			Stage stage = new Stage(); // Cria uma nova instância de Stage para a tela de login
+			Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/gui/login.fxml")));
+			stage.setScene(scene);
+			stage.show();
 
-            UsuarioEditController controller = loader.getController();
-            controller.setUserTxtData(userName, userId); // Passa os dados do usuário
+			Stage currentStage = (Stage) btnLogout.getScene().getWindow();
+			currentStage.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("Erro ao carregar a tela de login.");
+		}
+	}
 
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Erro ao carregar a cena: /gui/livro/procurarlivro.fxml");
-        }
-    }
+	public void setUserTxtData(String userName, int userId) {
+		this.userName = userName;
+		this.userId = userId;
+		txtUserName.setText(userName);
+		txtUserId.setText(String.valueOf(userId));
+		updateNotification(message);
+	}
 
-    @FXML
-    private void handleGoToCadastrarLivro() {
-    	try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/livro/cadastrolivro.fxml"));
-            Stage stage = (Stage) btnCadLivro.getScene().getWindow();
-            Scene scene = new Scene(loader.load());
+	@FXML
+	private void handleGoToProcurarUsuario() {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/usuario/procurarusuario.fxml"));
+			Stage stage = (Stage) btnSearchUser.getScene().getWindow();
+			Scene scene = new Scene(loader.load());
 
-            LivroController controller = loader.getController();
-            controller.setUserTxtData(userName, userId); // Passa os dados do usuário
+			ProcurarController controller = loader.getController();
+			controller.setUserTxtData(userName, userId); // Passa os dados do usuário
 
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Erro ao carregar a cena: /gui/livro/procurarlivro.fxml");
-        }
-    }
+			stage.setScene(scene);
+			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("Erro ao carregar a cena: /gui/livro/procurarlivro.fxml");
+		}
+	}
 
-    @FXML
-    private void handleGoToProcurarLivro() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/livro/procurarlivro.fxml"));
-            Stage stage = (Stage) btnSearchLivro.getScene().getWindow();
-            Scene scene = new Scene(loader.load());
+	@FXML
+	private void handleGoToEditarUsuario() {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/usuario/editarusuario.fxml"));
+			Stage stage = (Stage) btnEditUser.getScene().getWindow();
+			Scene scene = new Scene(loader.load());
 
-            LivroProcuraController controller = loader.getController();
-            controller.setUserTxtData(userName, userId); // Passa os dados do usuário
+			UsuarioEditController controller = loader.getController();
+			controller.setUserTxtData(userName, userId); // Passa os dados do usuário
 
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Erro ao carregar a cena: /gui/livro/procurarlivro.fxml");
-        }
-    }
+			stage.setScene(scene);
+			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("Erro ao carregar a cena: /gui/livro/procurarlivro.fxml");
+		}
+	}
 
+	@FXML
+	private void handleGoToCadastrarLivro() {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/livro/cadastrolivro.fxml"));
+			Stage stage = (Stage) btnCadLivro.getScene().getWindow();
+			Scene scene = new Scene(loader.load());
 
-    @FXML
-    private void handleGoToCadastrarEditora() {
-    	try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/editora/cadastroeditora.fxml"));
-            Stage stage = (Stage) btnCadEdit.getScene().getWindow();
-            Scene scene = new Scene(loader.load());
+			LivroController controller = loader.getController();
+			controller.setUserTxtData(userName, userId); // Passa os dados do usuário
 
-            EditoraController controller = loader.getController();
-            controller.setUserTxtData(userName, userId); // Passa os dados do usuário
+			stage.setScene(scene);
+			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("Erro ao carregar a cena: /gui/livro/procurarlivro.fxml");
+		}
+	}
 
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Erro ao carregar a cena: /gui/livro/procurarlivro.fxml");
-        }
-    }
+	@FXML
+	private void handleGoToProcurarLivro() {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/livro/procurarlivro.fxml"));
+			Stage stage = (Stage) btnSearchLivro.getScene().getWindow();
+			Scene scene = new Scene(loader.load());
 
-    @FXML
-    private void handleGoToProcurarEditora() {
-    	try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/editora/procurareditora.fxml"));
-            Stage stage = (Stage) btnSearchEdit.getScene().getWindow();
-            Scene scene = new Scene(loader.load());
+			LivroProcuraController controller = loader.getController();
+			controller.setUserTxtData(userName, userId); // Passa os dados do usuário
 
-            EditoraProcuraController controller = loader.getController();
-            controller.setUserTxtData(userName, userId); // Passa os dados do usuário
+			stage.setScene(scene);
+			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("Erro ao carregar a cena: /gui/livro/procurarlivro.fxml");
+		}
+	}
 
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Erro ao carregar a cena: /gui/livro/procurarlivro.fxml");
-        }
-    }
-    
-    public void registerAsObserver() {
-        GerenciadorBD.getInstancia().registerObserver(this);
-    }
+	@FXML
+	private void handleGoToCadastrarEditora() {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/editora/cadastroeditora.fxml"));
+			Stage stage = (Stage) btnCadEdit.getScene().getWindow();
+			Scene scene = new Scene(loader.load());
 
+			EditoraController controller = loader.getController();
+			controller.setUserTxtData(userName, userId); // Passa os dados do usuário
+
+			stage.setScene(scene);
+			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("Erro ao carregar a cena: /gui/livro/procurarlivro.fxml");
+		}
+	}
+
+	@FXML
+	private void handleGoToProcurarEditora() {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/editora/procurareditora.fxml"));
+			Stage stage = (Stage) btnSearchEdit.getScene().getWindow();
+			Scene scene = new Scene(loader.load());
+
+			EditoraProcuraController controller = loader.getController();
+			controller.setUserTxtData(userName, userId); // Passa os dados do usuário
+
+			stage.setScene(scene);
+			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("Erro ao carregar a cena: /gui/livro/procurarlivro.fxml");
+		}
+	}
+
+	public void registerAsObserver() {
+		GerenciadorBD.getInstancia().registerObserver(this);
+	}
 
 }
