@@ -24,6 +24,7 @@ public class GerenciadorBD {
 		this.editoras = new ArrayList<>();
 		popularDadosIniciais();
 	}
+	
 
 	private void popularDadosIniciais() {
 		// Usuários
@@ -83,9 +84,29 @@ public class GerenciadorBD {
 	public void salvarUsuario(Usuario usuario) {
 		this.usuarios.add(usuario);
 	}
+	
+	public void salvarLivro(Livro livro) {
+		
+	}
 
 	public void adicionarLivro(Livro livro) {
 		this.livros.add(livro);
+	}
+	
+	public void atualizarLivro(Livro livro) {
+	    // Aqui você pode adicionar lógica para atualizar o livro na sua coleção ou banco de dados
+	    int index = livros.indexOf(livro);
+	    if (index != -1) {
+	        livros.set(index, livro);
+	    }
+	}
+	
+	public void removerLivro(Livro livro) {
+		int index = livros.indexOf(livro);
+	    if (index != -1) {
+	        livros.remove(index);
+	    }
+
 	}
 
 	public void adicionarEditora(Editora editora) {
@@ -115,4 +136,5 @@ public class GerenciadorBD {
 	public Livro findLivroByTitulo(String titulo) {
 		return livros.stream().filter(livro -> livro.getTitulo().equalsIgnoreCase(titulo)).findFirst().orElse(null);
 	}
+	
 }

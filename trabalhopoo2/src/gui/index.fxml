@@ -17,7 +17,7 @@
          <children>
             <Button fx:id="btnSearchUser" mnemonicParsing="false" onAction="#handleGoToProcurarUsuario" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #112024;" text="Procurar" textFill="WHITE" />
             <Button fx:id="btnEditUser" mnemonicParsing="false" onAction="#handleGoToEditarUsuario" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #112024;" text="Editar" textFill="WHITE" />
-            <Button fx:id="btnDelUser" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #112024;" text="Deletar" textFill="WHITE" />
+            <Button fx:id="btnDelUser" mnemonicParsing="false" onAction="#handleGoToDeletarUsuario" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #112024;" text="Deletar" textFill="WHITE" />
             <Label text="Usuario logado:" />
             <TextField fx:id="txtUserName" editable="false" />
             <Label text="Id Logado:" />
@@ -28,7 +28,7 @@
          <children>
             <Button fx:id="btnCadLivro" mnemonicParsing="false" onAction="#handleGoToCadastrarLivro" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #112024;" text="Cadastrar" textFill="WHITE" />
             <Button fx:id="btnSearchLivro" mnemonicParsing="false" onAction="#handleGoToProcurarLivro" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #112024;" text="Procurar" textFill="WHITE" />
-            <Button fx:id="btnEditLivro" mnemonicParsing="false" onAction="#handleGoToEditarUsuario" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #112024;" text="Editar" textFill="WHITE" />
+            <Button fx:id="btnEditLivro" mnemonicParsing="false" onAction="#handleGoToEditarLivro" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #112024;" text="Editar" textFill="WHITE" />
             <Button fx:id="btnDelLivro" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #112024;" text="Deletar" textFill="WHITE" />
             <Label alignment="CENTER" contentDisplay="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="6.0" prefWidth="100.0" text="Notificações" textAlignment="JUSTIFY" />
             <TextField fx:id="txtNotification" editable="false" prefHeight="75.0" prefWidth="100.0" />

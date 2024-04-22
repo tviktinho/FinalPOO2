@@ -100,6 +100,50 @@ public class LivroProcuraController {
             System.out.println("Erro ao carregar a cena: /gui/index.fxml");
         }
     }
+    
+    @FXML
+    private void onBtnEditarClick() {
+        String selectedBookInfo = listViewLivros.getSelectionModel().getSelectedItem();
+        if (selectedBookInfo != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/editarLivro.fxml"));
+                Stage stage = new Stage();
+                stage.setScene(new Scene(loader.load()));
+
+                EditarLivroController editarController = loader.getController();
+                editarController.initData(selectedBookInfo);  // Passar dados do livro para o controlador de edição
+
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Erro ao abrir a tela de edição de livro.");
+            }
+        } else {
+            System.out.println("Selecione um livro para editar.");
+        }
+    }
+
+    
+    @FXML
+    private void onBtnDeletarClick() {
+        String selectedBookInfo = listViewLivros.getSelectionModel().getSelectedItem();
+        if (selectedBookInfo != null) {
+            String[] parts = selectedBookInfo.split(" - ");
+            String titulo = parts[0];
+
+            Livro livro = GerenciadorBD.getInstancia().findLivroByTitulo(titulo);
+            if (livro != null) {
+                GerenciadorBD.getInstancia().removerLivro(livro);  // Assume que você tenha um método para remover livros
+                listViewLivros.getItems().remove(selectedBookInfo);
+                System.out.println("Livro removido com sucesso.");
+            } else {
+                System.out.println("Erro ao tentar remover o livro.");
+            }
+        } else {
+            System.out.println("Selecione um livro para deletar.");
+        }
+    }
+
 
 
     private void atualizarLista() {
