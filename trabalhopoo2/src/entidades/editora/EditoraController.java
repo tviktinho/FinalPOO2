@@ -47,7 +47,8 @@ public class EditoraController {
             lblMensagem.setText("Erro ao cadastrar. O nome não pode estar vazio.");
         }
     }
-
+    
+  
     public void handleVoltar() {
     	try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/index.fxml"));

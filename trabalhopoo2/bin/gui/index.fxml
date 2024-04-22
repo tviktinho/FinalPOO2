@@ -39,7 +39,7 @@
          <children>
             <Button fx:id="btnCadEdit" mnemonicParsing="false" onAction="#handleGoToCadastrarEditora" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #112024;" text="Cadastrar" textFill="#f5f5f5" />
             <Button fx:id="btnSearchEdit" mnemonicParsing="false" onAction="#handleGoToProcurarEditora" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #112024;" text="Procurar" textFill="WHITE" />
-            <Button fx:id="btnEditEdit" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #112024;" text="Editar" textFill="WHITE" />
+            <Button fx:id="btnEditEdit" mnemonicParsing="false" onAction="#handleGoToEditarEditora" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #112024;" text="Editar" textFill="WHITE" />
             <Button fx:id="btnDelEdit" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #112024;" text="Deletar" textFill="WHITE" />
          </children>
       </VBox>
