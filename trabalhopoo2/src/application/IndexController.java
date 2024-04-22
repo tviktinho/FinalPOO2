@@ -20,6 +20,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -40,7 +41,7 @@ public class IndexController implements LivroObserver {
     @FXML private TextField txtUserName;
     @FXML private TextField txtUserId;
     @FXML private Button btnLogout;
-    @FXML private TextField txtNotification;
+    @FXML private TextArea txtNotification;
 
 	private String userName = null;
 	private int userId = -1;
@@ -297,6 +298,7 @@ public class IndexController implements LivroObserver {
 			System.out.println("Erro ao carregar a cena: /gui/editora/editareditora.fxml");
 		}
 	}
+	
 	public void registerAsObserver() {
 		GerenciadorBD.getInstancia().registerObserver(this);
 	}
@@ -310,7 +312,4 @@ public class IndexController implements LivroObserver {
         Optional<ButtonType> result = alert.showAndWait();
         return result.isPresent() && result.get() == ButtonType.OK;
     }
-	
-	
-
 }
