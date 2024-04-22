@@ -29,9 +29,9 @@ public class LoginController {
         String username = txtUsername.getText();
         String password = txtPassword.getText();
 
-        if (GerenciadorBD.getInstancia().validarUsuario(username, password)) {
+        if (GerenciadorBDFacade.getInstancia().validarUsuario(username, password)) {
             System.out.println("Login bem-sucedido, configurando observador...");
-            this.idUser = GerenciadorBD.getInstancia().getIdUsuario(username);
+            this.idUser = GerenciadorBDFacade.getInstancia().getIdUsuario(username);
             openIndexView(this.idUser);
         } else {
             System.out.println("Falha no login.");
@@ -49,7 +49,7 @@ public class LoginController {
             controller.setUserTxtData(txtUsername.getText(), idUser);
 
             // Registra o observador assim que o controlador é acessível
-            GerenciadorBD.getInstancia().registerObserver(controller);
+            GerenciadorBDFacade.getInstancia().registerObserver(controller);
             System.out.println("Observador registrado.");
 
             stage.setScene(scene);

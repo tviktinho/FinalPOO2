@@ -2,7 +2,7 @@ package entidades.usuario;
 
 import java.io.IOException;
 
-import application.GerenciadorBD;
+import application.GerenciadorBDFacade;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -52,8 +52,8 @@ public class CadastroController {
         
 
         if(validarDados(nome, email, senha, confirmarSenha)) {
-            Usuario novoUsuario = new Usuario(nome, email, senha, telefone, GerenciadorBD.getInstancia().getNovoIdUsuario());
-            GerenciadorBD.getInstancia().salvarUsuario(novoUsuario);
+            Usuario novoUsuario = new Usuario(nome, email, senha, telefone, GerenciadorBDFacade.getInstancia().getNovoIdUsuario());
+            GerenciadorBDFacade.getInstancia().salvarUsuario(novoUsuario);
             lblMensagem.setText("Cadastro realizado com sucesso!");
         } else {
             lblMensagem.setText("Erro ao cadastrar. Verifique os dados e tente novamente.");

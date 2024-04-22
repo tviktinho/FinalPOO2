@@ -286,7 +286,7 @@ public class IndexController implements LivroObserver {
 	}
 	
 	public void registerAsObserver() {
-		GerenciadorBD.getInstancia().registerObserver(this);
+		GerenciadorBDFacade.getInstancia().registerObserver(this);
 	}
 	
 	private boolean confirmDeletion(String message) {

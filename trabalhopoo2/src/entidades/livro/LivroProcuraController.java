@@ -2,7 +2,7 @@ package entidades.livro;
 
 import java.io.IOException;
 
-import application.GerenciadorBD;
+import application.GerenciadorBDFacade;
 import application.IndexController;
 import entidades.mediator.BibliotecaMediator;
 import entidades.usuario.Usuario;
@@ -14,7 +14,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class LivroProcuraController {
+public class LivroProcuraController  {
 
     @FXML private TextField txtTitulo;
     @FXML private TextField txtEditora;
@@ -55,8 +55,8 @@ public class LivroProcuraController {
             String[] parts = selectedBookInfo.split(" - ");
             String titulo = parts[0];
 
-            Livro livro = GerenciadorBD.getInstancia().findLivroByTitulo(titulo);
-            Usuario usuario = GerenciadorBD.getInstancia().findUsuarioById(userId);
+            Livro livro = GerenciadorBDFacade.getInstancia().findLivroByTitulo(titulo);
+            Usuario usuario = GerenciadorBDFacade.getInstancia().findUsuarioById(userId);
             
             if (livro != null && usuario != null) {
                 BibliotecaMediator mediator = new BibliotecaMediator();
@@ -102,7 +102,7 @@ public class LivroProcuraController {
             controller.setMessage(message);
             controller.setUserTxtData(userName, userId);
             
-            GerenciadorBD.getInstancia().registerObserver(controller); // Re-registra o observador
+            GerenciadorBDFacade.getInstancia().registerObserver(controller); // Re-registra o observador
 
             stage.show();
         } catch (IOException e) {
@@ -141,9 +141,9 @@ public class LivroProcuraController {
             String[] parts = selectedBookInfo.split(" - ");
             String titulo = parts[0];
 
-            Livro livro = GerenciadorBD.getInstancia().findLivroByTitulo(titulo);
+            Livro livro = GerenciadorBDFacade.getInstancia().findLivroByTitulo(titulo);
             if (livro != null) {
-                GerenciadorBD.getInstancia().removerLivro(livro);  // Assume que você tenha um método para remover livros
+                GerenciadorBDFacade.getInstancia().removerLivro(livro);  // Assume que você tenha um método para remover livros
                 listViewLivros.getItems().remove(selectedBookInfo);
                 System.out.println("Livro removido com sucesso.");
             } else {
@@ -179,7 +179,7 @@ public class LivroProcuraController {
         String filtroEditora = txtEditora.getText().toLowerCase();
         String filtroAutor = txtAutor.getText().toLowerCase();
 
-        GerenciadorBD.getInstancia().getLivros().stream()
+        GerenciadorBDFacade.getInstancia().getLivros().stream()
             .filter(livro -> livro.getTitulo().toLowerCase().contains(filtroTitulo) && 
                              livro.getEditora().toLowerCase().contains(filtroEditora) && 
                              livro.getAutor().toLowerCase().contains(filtroAutor))

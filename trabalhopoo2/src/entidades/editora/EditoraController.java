@@ -12,8 +12,9 @@ import javafx.scene.control.Label;
 
 import java.io.IOException;
 import javafx.scene.Node;
-import application.GerenciadorBD;
+import application.GerenciadorBDFacade;
 import application.IndexController;
+import interfaces.EditoraFactory;
 
 public class EditoraController {
 
@@ -39,8 +40,9 @@ public class EditoraController {
         String nome = txtNome.getText().trim();
 
         if (!nome.isEmpty()) {
-            Editora novaEditora = new Editora(nome);
-            GerenciadorBD.getInstancia().adicionarEditora(novaEditora);
+        	EditoraFactory editoraFactory = new SimpleEditoraFactory();
+			Editora novaEditora = editoraFactory.createEditora(nome);
+            GerenciadorBDFacade.getInstancia().adicionarEditora(novaEditora);
             lblMensagem.setText("Cadastro realizado com sucesso!");
             txtNome.clear(); // Limpa o campo após o cadastro
         } else {

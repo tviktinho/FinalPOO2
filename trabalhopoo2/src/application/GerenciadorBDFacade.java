@@ -7,8 +7,8 @@ import entidades.editora.Editora;
 import entidades.livro.Livro;
 import entidades.usuario.Usuario;
 
-public class GerenciadorBD {
-	private static GerenciadorBD instancia;
+public class GerenciadorBDFacade {
+	private static GerenciadorBDFacade instancia;
 	private IndexController indexController;
 
 	// Simulando um banco de dados com uma estrutura de dados simples
@@ -17,7 +17,7 @@ public class GerenciadorBD {
 	private List<Editora> editoras;
 	
 
-	private GerenciadorBD() {
+	private GerenciadorBDFacade() {
 		// Inicializa a lista que simula o banco de dados
 		this.usuarios = new ArrayList<>();
 		this.livros = new ArrayList<>();
@@ -61,9 +61,9 @@ public class GerenciadorBD {
 		return false;
 	}
 
-	public static synchronized GerenciadorBD getInstancia() {
+	public static synchronized GerenciadorBDFacade getInstancia() {
 		if (instancia == null) {
-			instancia = new GerenciadorBD();
+			instancia = new GerenciadorBDFacade();
 		}
 		return instancia;
 	}
