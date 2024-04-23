@@ -122,7 +122,6 @@ public class IndexController implements LivroObserver {
 
 			ProcurarController controller = loader.getController();
 			controller.setUserTxtData(userName, userId); // Passa os dados do usuário
-
 			stage.setScene(scene);
 			stage.show();
 		} catch (IOException e) {

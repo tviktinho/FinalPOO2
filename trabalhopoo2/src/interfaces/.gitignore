@@ -1,3 +1,6 @@
 /AluguelLivroMediator.class
 /LivroObserver.class
 /UsuarioObserver.class
+/ButtonDecorator.class
+/EditoraFactory.class
+/Observer.class

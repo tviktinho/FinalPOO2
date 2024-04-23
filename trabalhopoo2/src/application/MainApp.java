@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
@@ -15,7 +16,8 @@ public class MainApp extends Application {
             Parent root = FXMLLoader.load(getClass().getResource("/gui/login.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
-            primaryStage.setTitle("Sistema de Livraria - Login");
+            primaryStage.setTitle("Livraria");
+            primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/gui/logo/logojava.png")));
             primaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();

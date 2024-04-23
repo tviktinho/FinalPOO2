@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -25,6 +26,7 @@ public class LivroProcuraController  {
     @FXML private Button btnProcurar;
     @FXML private Button btnEditLivro;
     @FXML private Button btnVoltar;
+    @FXML private Label labelAlugar;
     
     private String userName;
     private int userId;
@@ -62,16 +64,20 @@ public class LivroProcuraController  {
                 BibliotecaMediator mediator = new BibliotecaMediator();
                 if (mediator.alugarLivro(usuario, livro)) {
                     atualizarLista();
-                    System.out.println("Livro alugado com sucesso.");
+                    labelAlugar.setText("Livro alugado com sucesso.");
+                    
                     notificarIndexController(livro);
                 } else {
-                    System.out.println("Falha ao alugar o livro.");
+                	labelAlugar.setText("Falha ao alugar o livro.");
+                    
                 }
             } else {
-                System.out.println("Livro ou usuário não encontrado.");
+            	labelAlugar.setText("Livro ou usuário não encontrado.");
+                
             }
         } else {
-            System.out.println("Selecione um livro para alugar.");
+        	labelAlugar.setText("Selecione um livro para alugar.");
+            
         }
     }
     

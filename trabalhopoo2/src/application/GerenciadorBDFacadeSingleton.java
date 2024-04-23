@@ -26,8 +26,8 @@ public class GerenciadorBDFacadeSingleton {
 
 	private void popularDadosIniciais() {
 		// Usuários
-		usuarios.add(new Usuario("Alice Silva", "alice@example.com", "38263826", "senha123", usuarios.size()));
-		usuarios.add(new Usuario("Bob Martins", "bob@example.com", "38244826", "senha456", usuarios.size()));
+		usuarios.add(new Usuario("Alice Silva", "alice@example.com", "senha123",  "38263826", usuarios.size()));
+		usuarios.add(new Usuario("Bob Martins", "bob@example.com", "senha456", "38244826", usuarios.size()));
 		usuarios.add(new Usuario("1", "1@", "1", "1", usuarios.size()));
 
 		// Livros

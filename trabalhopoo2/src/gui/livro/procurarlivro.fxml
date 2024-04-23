@@ -11,13 +11,13 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="317.0" style="-fx-background-color: #aac9c6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="entidades.livro.LivroProcuraController">
    <children>
       <Label layoutX="24.0" layoutY="143.0" text="Titulo" />
-      <Label layoutX="24.0" layoutY="181.0" text="Editora" />
+      <Label layoutX="25.0" layoutY="177.0" text="Editora" />
       <Label layoutX="26.0" layoutY="211.0" text="Autor" />
       
-      <TextField fx:id="txtTitulo" layoutX="142.0" layoutY="139.0" />
-      <TextField fx:id="txtEditora" layoutX="142.0" layoutY="177.0" />
-      <TextField fx:id="txtAutor" layoutX="142.0" layoutY="207.0" />
-      <ListView fx:id="listViewLivros" layoutX="58.0" layoutY="256.0" prefHeight="200.0" prefWidth="200.0" />
+      <TextField fx:id="txtTitulo" layoutX="143.0" layoutY="139.0" />
+      <TextField fx:id="txtEditora" layoutX="143.0" layoutY="173.0" prefHeight="25.0" prefWidth="149.0" />
+      <TextField fx:id="txtAutor" layoutX="143.0" layoutY="207.0" />
+      <ListView fx:id="listViewLivros" layoutX="12.0" layoutY="256.0" prefHeight="200.0" prefWidth="293.0" />
       
       <Button fx:id="btnProcurar" layoutX="12.0" layoutY="506.0" mnemonicParsing="false" onAction="#onBuscarClick" style="-fx-background-color: #112024;" text="Procurar" textFill="WHITE" />
       <Button fx:id="btnCancelar" layoutX="240.0" layoutY="506.0" mnemonicParsing="false" onAction="#onBtnCancelarClick" prefHeight="25.0" prefWidth="61.0" style="-fx-background-color: #112024;" text="Voltar" textFill="WHITE" />
@@ -29,6 +29,7 @@
             <Image url="@../../../../logojava.png" />
          </image>
       </ImageView>
+      <Label fx:id="labelAlugar" layoutX="77.0" layoutY="463.0" prefHeight="17.0" prefWidth="223.0" textAlignment="JUSTIFY" />
       
    </children>
    

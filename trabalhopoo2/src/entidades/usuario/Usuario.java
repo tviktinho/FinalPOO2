@@ -48,8 +48,14 @@ public class Usuario{
         this.telefone = telefone;
     }
     
-    public String toString() {
-        return nome + " - " + email + " - " + telefone;
+    
+    @Override
+	public String toString() {
+		return "nome: " + nome + ", email: " + email + ", telefone: " + telefone;
+	}
+
+	public String procurar() {
+    	return getNome() + " - " + getEmail() + " - " + getTelefone();
     }
     
 	public int getId() {

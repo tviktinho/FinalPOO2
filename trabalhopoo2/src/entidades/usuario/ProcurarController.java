@@ -49,6 +49,8 @@ public class ProcurarController {
             .forEach(u -> listViewUsuarios.getItems().add(u.toString())); // Adiciona a representação string do usuário
     }
     
+    
+    
     @FXML
 	private void onBtnCancelarClick() {
     	try {
@@ -58,7 +60,8 @@ public class ProcurarController {
 
             IndexController controller = loader.getController();
             controller.setUserTxtData(userName, userId); 
-
+            controller.setMessage(controller.getMessage());
+            System.out.println(controller.getMessage());
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
@@ -66,9 +69,5 @@ public class ProcurarController {
             System.out.println("Erro ao carregar a cena: /gui/livro/procurarlivro.fxml");
         }
 	}
-	
-	
-    
-
 
 }

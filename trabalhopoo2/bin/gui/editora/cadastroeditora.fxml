@@ -13,7 +13,7 @@
       <Button fx:id="btnVoltar" layoutX="241.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleVoltar" style="-fx-background-color: #112024;" text="Voltar" textFill="WHITE" />
       <Label layoutX="42.0" layoutY="254.0" text="Nome" />
       <TextField fx:id="txtNome" layoutX="125.0" layoutY="250.0" />
-      <Label fx:id="lblMensagem" layoutX="145.0" layoutY="208.0" />
+      <Label fx:id="lblMensagem" layoutX="84.0" layoutY="177.0" prefHeight="17.0" prefWidth="149.0" textAlignment="JUSTIFY" />
       <ImageView fitHeight="163.0" fitWidth="202.0" layoutX="77.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../logojava.png" />
